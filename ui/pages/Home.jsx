@@ -11,8 +11,8 @@ import AboutMe from '../organisms/AboutMe';
 import SkillSet from '../organisms/SkillSet';
 import Experience from '../organisms/Experience';
 import Contact from '../organisms/Contact';
-import Freelancer from '../templates/Freelancer'; 
 import Footer from '../organisms/Footer'; 
+import PortfolioLayout from '../templates/PortfolioLayout'; 
 
 class Body extends Component
 {
@@ -49,7 +49,7 @@ class Body extends Component
 }
 
 const Home = () =>
-<Freelancer
+<PortfolioLayout
     cover={<Cover />}
     body={<Body />}
     contentWrapper={{

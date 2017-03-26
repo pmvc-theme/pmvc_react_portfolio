@@ -6,7 +6,7 @@ import { scrollDispatch } from 'organism-react-scroll-nav';
 import Header from '../organisms/Header'; 
 import Footer from '../organisms/Footer'; 
 
-export default class Freelancer extends Component
+export default class PortfolioLayout extends Component
 {
     constructor(props)
     {
