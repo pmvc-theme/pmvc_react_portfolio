@@ -2,33 +2,48 @@ import React, {Component} from 'react';
 import { CardView } from 'react-atomic-organism';
 import { 
     lazyInject,
+    Image,
     List,
-    Card
+    Card,
+    Header,
+    Description
 } from 'react-atomic-molecule';
 import get from 'get-object-value';
+import SkillIcon from '../molecules/SkillIcon';
 
 const CardList = (props) =>
 {
-    const {header, content} = props;
+    const {icon, image, header, content} = props;
     return (
         <List type="card" className="skillset" styles={injects.cards}> 
-            {get(props, ['image'], []).map((item, num)=>
-                <CardView
-                    key={num}    
-                    imageSrc={item}
-                    header={header[num]}
-                    description={content[num]}
-                    style={Styles.card}
-                />
-            )}
-            {get(props, ['icon', 'color'], []).map((item, num)=>
-                <Card
-                    key={num}
-                    style={Styles.card}
-                >
-                    {item}
-                </Card>
-            )}
+            {get(props, ['header'], []).map((item, num)=> {
+                let img;
+                if (get(image,[num])) {
+                    return (
+                        <CardView
+                            key={num}    
+                            imageSrc={get(image,[num])}
+                            header={header[num]}
+                            description={content[num]}
+                            style={Styles.card}
+                        />
+                    );
+                } else {
+                    return (
+                        <Card
+                            key={num}
+                            style={Styles.card}
+                        >
+                            <SkillIcon
+                                color={get(icon, ['color', num])}
+                                text={get(icon, ['text', num])}
+                            />
+                            <Header>{header[num]}</Header>
+                            <Description>{content[num]}</Description>
+                        </Card>
+                    );
+                }
+            })}
         </List>
     );
 }
@@ -51,7 +66,7 @@ const Styles = {
     card: {
         background: 'transparent',
         boxShadow: 'none',
-        color: '#fff',
+        color: '#000',
         textAlign: 'center',
         width: 150,
     },
