@@ -22,7 +22,7 @@ class Introduce extends Component
                     {props.hd}
                 </div>
                 <div className="bd" style={Styles.bd}>
-                    {get(bd, 'fixed')}
+                    {get(bd, ['fixed'])}
                     <Typing
                         color="#fff"
                         ref={el=>this.type=el}
@@ -64,7 +64,7 @@ const Styles = {
         fontWeight: '700'
     },
     ft: {
-        width: '75%'
+        width: 300,
     }
 
     

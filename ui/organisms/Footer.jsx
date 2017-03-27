@@ -1,16 +1,21 @@
 import React, {Component} from 'react'; 
 
-import { pageStore } from 'reshow'; 
+import { reshow, ReshowComponent } from 'reshow'; 
+import get from 'get-object-value';
 
-const Footer = (props) => { 
-    const I18N = pageStore.getMap('I18N');
-    return (
-    <div style={Styles.container}>
-        {I18N.footerText}
-    </div>
-    )
-};
-export default Footer;
+class Footer extends ReshowComponent
+{
+    render()
+    {
+        const I18N = get(this, ['state', 'I18N'], {});
+        return (
+        <div style={Styles.container}>
+            {I18N.footerText}
+        </div>
+        );
+    }
+}
+export default reshow(Footer);
 
 const Styles = {
     container: {

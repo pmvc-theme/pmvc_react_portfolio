@@ -1,19 +1,15 @@
 import React from 'react';
-import { assign } from 'react-atomic-molecule';
 import WhiteBlock from '../molecules/WhiteBlock';
 
 const SvgBlackBlock = (props)=>{
     const {style, ...reset} = props; 
     return (
-    <div
-        style={assign(
-            {},
-            Styles.container,
-            style
-        )}
-    >
-    <WhiteBlock {...reset} />
-   </div>
+    <WhiteBlock {...reset}
+        style={{
+            ...Styles.container,
+            ...style
+        }}
+    />
    );
 };
 

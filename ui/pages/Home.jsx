@@ -5,13 +5,14 @@ import { ScrollSpy } from 'organism-react-scroll-nav';
 import ScrollAnimate from 'organism-react-scroll-animate';
 
 import HeaderContent from '../molecules/HeaderContent';
+import SvgBlackBlock from '../molecules/SvgBlackBlock';
+import WhiteBlock from '../molecules/WhiteBlock';
 import Cover from '../organisms/Cover';
 import Portfolio from '../organisms/Portfolio';
 import AboutMe from '../organisms/AboutMe';
 import SkillSet from '../organisms/SkillSet';
 import Experience from '../organisms/Experience';
 import Contact from '../organisms/Contact';
-import Footer from '../organisms/Footer'; 
 import PortfolioLayout from '../templates/PortfolioLayout'; 
 
 class Body extends Component
@@ -29,8 +30,12 @@ class Body extends Component
                     <Portfolio {...section.portfolio} />
                 </ScrollSpy>
                 <ScrollSpy id="about-me">
-                    <AboutMe {...section.aboutme} />
-                    <SkillSet {...section.skillset} />
+                    <SvgBlackBlock name="aboutme">
+                        <AboutMe  />
+                    </SvgBlackBlock>
+                    <WhiteBlock name="skillset">
+                        <SkillSet />
+                    </WhiteBlock>
                 </ScrollSpy>
                 <ScrollAnimate
                     scrollMargin={-100}

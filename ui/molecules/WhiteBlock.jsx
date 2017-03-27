@@ -1,13 +1,13 @@
 import React from 'react';
-import { ContentBlock } from 'pmvc_react_landing';
-import { assign } from 'react-atomic-molecule';
+import Section from '../molecules/Section';
 
 const WhiteBlock = (props) => 
-    <ContentBlock {...props} style={assign(
-        {},
-        Styles.container,
-        props.style
-    )}/>
+    <Section {...props} 
+        style={{
+            ...Styles.container,
+            ...props.style
+        }}
+    />
 
 export default WhiteBlock;
 

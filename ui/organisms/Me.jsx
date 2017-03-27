@@ -8,9 +8,13 @@ const Me = ({me, ...props}) =>
             props
         );
     } else {
-        return (
-            <img src={me} {...props}/>
-        );
+        if (me) {
+            return (
+                <img src={me} {...props}/>
+            );
+        } else {
+            return null;
+        }
     }
 }
 

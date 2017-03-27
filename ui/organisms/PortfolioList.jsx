@@ -1,5 +1,6 @@
 import React from 'react'; 
 import ZoomIn from 'ricon/ZoomIn';
+import get from 'get-object-value';
 import { 
     lazyInject,
     List,
@@ -67,10 +68,10 @@ class PortfolioList extends PopupMonitor
 
     render()
     {
-        const {image, header, keys} = this.props;
+        const {header, keys, ...props} = this.props;
         return (
             <List type="card" styles={injects.cards} className="portfolio"> 
-            {image.map((item, num)=>
+            {get(props, ['image'], []).map((item, num)=>
                 <HoverDimmerCardView
                     key={num}
                     imageSrc={item}

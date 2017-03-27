@@ -3,8 +3,8 @@ import { CardView } from 'react-atomic-organism';
 import { 
     lazyInject,
     List,
+    Card
 } from 'react-atomic-molecule';
-import WhiteBlock from '../molecules/WhiteBlock';
 import get from 'get-object-value';
 
 const CardList = (props) =>
@@ -21,21 +21,27 @@ const CardList = (props) =>
                     style={Styles.card}
                 />
             )}
+            {get(props, ['icon', 'color'], []).map((item, num)=>
+                <Card
+                    key={num}
+                    style={Styles.card}
+                >
+                    {item}
+                </Card>
+            )}
         </List>
     );
 }
 
 const SkillSet = (props) =>
 {
-    const {card} = props;
+    const {cards} = props;
     injects = lazyInject(
         injects,
         InjectStyles
     );
     return (
-        <WhiteBlock>
-            <CardList {...card}/>
-        </WhiteBlock>
+        <CardList {...cards}/>
     );
 }
 

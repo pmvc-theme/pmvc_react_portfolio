@@ -7,7 +7,6 @@ import get from 'get-object-value';
 
 import Header from '../molecules/AnimateHeader';
 import Content from '../molecules/AnimateContent';
-import SvgBlackBlock from '../molecules/SvgBlackBlock';
 
 const CardList = (props) => {
     const {header, content} = props;
@@ -35,7 +34,7 @@ const AboutMe = (props) => {
         InjectStyles
     );
     return (
-        <SvgBlackBlock style={Styles.container}>
+        <div>
             <Header>
                 {header}
             </Header>
@@ -43,14 +42,13 @@ const AboutMe = (props) => {
                 {content}
             </Content>
             <CardList {...card} />
-        </SvgBlackBlock>
+        </div>
     );
 };
 
 export default AboutMe;
 
 const Styles = {
-    container: {},
     card: {
         background: 'transparent',
         boxShadow: 'none',

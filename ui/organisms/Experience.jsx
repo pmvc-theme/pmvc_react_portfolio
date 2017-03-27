@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; 
 import { EventTimeline } from 'organism-react-event-timeline'; 
 import {scrollStore} from 'organism-react-scroll-nav';
+import get from 'get-object-value';
 
 import WhiteBlock from '../molecules/WhiteBlock';
 import Header from '../molecules/AnimateHeader';
@@ -17,7 +18,7 @@ class Experience extends Component
     {
         const {header, content, events} = this.props;
         let arrEvent = [];
-        events.header.forEach((item, k)=>{
+        get(events,['header'],[]).forEach((item, k)=>{
             arrEvent.push({
                 header: item,
                 description: events.content[k].split('[br]'),
