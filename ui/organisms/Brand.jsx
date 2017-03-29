@@ -19,7 +19,7 @@ const Brand = (props) => (
             top: '50%',
             transform: ['translateY(-50%)'],
             display: 'inline-block',
-            color: '#fff',
+            color: '#fff !important',
             textDecoration: 'none',
         },null, false)} 
         onClick={()=>{smoothScrollTo(0)}}

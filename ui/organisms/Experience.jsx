@@ -7,7 +7,7 @@ import WhiteBlock from '../molecules/WhiteBlock';
 import Header from '../molecules/AnimateHeader';
 import Content from '../molecules/AnimateContent';
 
-class Experience extends Component
+class ExperienceBody extends Component
 {
     componentDidMount()
     {
@@ -27,8 +27,7 @@ class Experience extends Component
             });
         });
         return (
-           <div style={Styles.container}>
-           <WhiteBlock>
+            <div>
                 <Header style={Styles.header}>
                     {header}
                 </Header>
@@ -44,11 +43,15 @@ class Experience extends Component
                         enter: 'fadeInRight'
                     }}
                 />
-           </WhiteBlock>
-           </div>
+            </div>
         );
     }
 }
+
+const Experience = ()=>
+<WhiteBlock name="experience" style={Styles.container}>
+    <ExperienceBody />
+</WhiteBlock>
 
 export default Experience;
 
@@ -56,6 +59,7 @@ const Styles = {
     container: {
         background: 'url(http://freelancer.ntd230.com/photos/pattern.svg) 50% 50% / cover no-repeat #3C5B65',
         color: '#fff',
+        maxWidth: '100%',
     },
 };
 

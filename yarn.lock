@@ -933,8 +933,8 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
 convert-source-map@^1.1.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.4.0.tgz#e3dad195bf61bfe13a7a3c73e9876ec14a0268f3"
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.0.tgz#9acd70851c6d5dfdd93d9282e5edf94a03ff46b5"
 
 cookiejar@^2.0.6:
   version "2.1.0"
@@ -957,6 +957,10 @@ cryptiles@2.x.x:
   resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
   dependencies:
     boom "2.x.x"
+
+d3@3.x:
+  version "3.5.17"
+  resolved "https://registry.yarnpkg.com/d3/-/d3-3.5.17.tgz#bc46748004378b21a360c9fc7cf5231790762fb8"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -1614,8 +1618,8 @@ organism-react-apple-device@*:
     react-atomic-molecule "*"
 
 organism-react-event-timeline@*:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/organism-react-event-timeline/-/organism-react-event-timeline-0.0.7.tgz#8d068bc770ece8e4096f6745e87a07bdca008c37"
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/organism-react-event-timeline/-/organism-react-event-timeline-0.0.8.tgz#de0d5f899beaca54271cc17ad3601f803518b748"
   dependencies:
     colorlib "*"
     organism-react-scroll-animate "*"
@@ -1647,16 +1651,16 @@ organism-react-popup@*:
     reduce-flux "*"
 
 organism-react-scroll-animate@*:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/organism-react-scroll-animate/-/organism-react-scroll-animate-0.0.21.tgz#98139a01d34e5152101770ba392e383065573b0a"
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/organism-react-scroll-animate/-/organism-react-scroll-animate-0.0.23.tgz#02f6c5d6298286af607c4735cf16f171bb9e7df2"
   dependencies:
     organism-react-animate ">=0.0.4"
     organism-react-scroll-nav ">=0.0.18"
     react-atomic-molecule "*"
 
 organism-react-scroll-nav@*, organism-react-scroll-nav@>=0.0.18:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/organism-react-scroll-nav/-/organism-react-scroll-nav-0.2.5.tgz#edbe6b1ad69fe926062f61106cad8c42c67bda5a"
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/organism-react-scroll-nav/-/organism-react-scroll-nav-0.2.6.tgz#088f46c86d30640018f52af7c9d457f1633d5bd0"
   dependencies:
     get-object-value "*"
     get-scroll-info "*"
@@ -1667,14 +1671,14 @@ organism-react-scroll-nav@*, organism-react-scroll-nav@>=0.0.18:
     smooth-scroll-to "*"
 
 organism-react-tag-highlight@*:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/organism-react-tag-highlight/-/organism-react-tag-highlight-0.0.1.tgz#5461264c98c0ddb14a4913e405333af6ea5bd896"
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/organism-react-tag-highlight/-/organism-react-tag-highlight-0.0.3.tgz#82c0e131325f9ca452bc69663aa6a82a6590f36c"
   dependencies:
     react-atomic-molecule "*"
 
 organism-react-typing@*:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/organism-react-typing/-/organism-react-typing-0.0.6.tgz#dd6820f74e46ccc36dc1edfa75ac01beadc0ef81"
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/organism-react-typing/-/organism-react-typing-0.0.7.tgz#002c8d7889c1600d7ff0c2fd52577da304b52526"
   dependencies:
     react-atomic-molecule "*"
 
@@ -1765,6 +1769,10 @@ rc@^1.1.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+rd3@*:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/rd3/-/rd3-0.7.4.tgz#d5ddf1025a844e4fbef28d918276f97ee1abdcd9"
 
 react-addons-css-transition-group@*:
   version "15.4.2"
@@ -1924,8 +1932,8 @@ request@^2.81.0:
     uuid "^3.0.0"
 
 reshow@*:
-  version "0.1.27"
-  resolved "https://registry.yarnpkg.com/reshow/-/reshow-0.1.27.tgz#295f12d6e5d6bec23490db614b11d964821725bf"
+  version "0.1.28"
+  resolved "https://registry.yarnpkg.com/reshow/-/reshow-0.1.28.tgz#e884a07d5008e7b43423107dc9828518f2e261ab"
   dependencies:
     getoffset "*"
     organism-react-ajax "*"

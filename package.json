@@ -11,6 +11,7 @@
   "author": "Hill <hill@kimo.com>",
   "license": "MIT",
   "dependencies": {
+    "d3": "3.x",
     "organism-react-animate": "*",
     "organism-react-apple-device": "*",
     "organism-react-event-timeline": "*",
@@ -22,6 +23,7 @@
     "organism-react-tag-highlight": "*",
     "organism-react-typing": "*",
     "pmvc_react_landing": "*",
+    "rd3": "*",
     "react-atomic-molecule": "*",
     "react-atomic-organism": "*",
     "reshow": "*",

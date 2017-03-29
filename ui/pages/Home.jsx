@@ -1,6 +1,6 @@
 import React, {Component} from 'react'; 
 import { SemanticUI } from 'react-atomic-molecule';
-import { pageStore } from 'reshow'; 
+import { pageStore, Section } from 'reshow'; 
 import { ScrollSpy } from 'organism-react-scroll-nav';
 import ScrollAnimate from 'organism-react-scroll-animate';
 
@@ -12,6 +12,8 @@ import Portfolio from '../organisms/Portfolio';
 import AboutMe from '../organisms/AboutMe';
 import SkillSet from '../organisms/SkillSet';
 import Experience from '../organisms/Experience';
+import MyTime from '../organisms/MyTime';
+import Detail from '../organisms/Detail';
 import Contact from '../organisms/Contact';
 import PortfolioLayout from '../templates/PortfolioLayout'; 
 
@@ -40,11 +42,13 @@ class Body extends Component
                 <ScrollAnimate
                     scrollMargin={-100}
                     id="experience"
-                    testScrollTo={true}
+                    monitorScroll={true}
                     style={{background:'#3C5B65'}}
                 >
-                    {()=><Experience {...section.experience}/>}
+                    {()=><Experience />}
                 </ScrollAnimate>
+                <MyTime />
+                <Detail />
                 <ScrollSpy id="contact">
                     <Contact {...section.contact} />
                 </ScrollSpy>

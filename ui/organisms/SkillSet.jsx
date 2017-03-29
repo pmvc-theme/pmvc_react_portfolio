@@ -9,7 +9,19 @@ import {
     Description
 } from 'react-atomic-molecule';
 import get from 'get-object-value';
-import SkillIcon from '../molecules/SkillIcon';
+
+// icons
+import SkillPHPIcon from '../organisms/SkillPHPIcon';
+import SkillJSIcon from '../organisms/SkillJSIcon';
+import SkillHtml5Icon from '../organisms/SkillHtml5Icon';
+import SkillCss3Icon from '../organisms/SkillCss3Icon';
+
+const Icons = {
+    php: SkillPHPIcon,
+    js: SkillJSIcon,
+    html5: SkillHtml5Icon,
+    css3: SkillCss3Icon
+};
 
 const CardList = (props) =>
 {
@@ -29,15 +41,13 @@ const CardList = (props) =>
                         />
                     );
                 } else {
+                    const build = React.createElement;
                     return (
                         <Card
                             key={num}
                             style={Styles.card}
                         >
-                            <SkillIcon
-                                color={get(icon, ['color', num])}
-                                text={get(icon, ['text', num])}
-                            />
+                            {build(Icons[icon[num]])}
                             <Header>{header[num]}</Header>
                             <Description>{content[num]}</Description>
                         </Card>
