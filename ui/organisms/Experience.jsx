@@ -31,7 +31,7 @@ class ExperienceBody extends Component
             let to = pos.top - (headerPos.bottom-headerPos.top);
             smoothScrollTo(to, delay, null, ()=>{
                 setTimeout(()=>{
-                    tune(1);
+                    tune(200);
                 },500);
             });
         };
