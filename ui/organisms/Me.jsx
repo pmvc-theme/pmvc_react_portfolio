@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image} from 'organism-react-animate';
 
 const Me = ({me, ...props}) => 
 {
@@ -10,7 +11,10 @@ const Me = ({me, ...props}) =>
     } else {
         if (me) {
             return (
-                <img src={me} {...props}/>
+                <Image {...props}
+                    src={me}
+                    className='centered circular'
+                />
             );
         } else {
             return null;

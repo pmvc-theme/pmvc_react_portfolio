@@ -1053,8 +1053,8 @@ fbemitter@^2.0.0:
     fbjs "^0.8.4"
 
 fbjs@^0.8.0, fbjs@^0.8.1, fbjs@^0.8.4:
-  version "0.8.11"
-  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.11.tgz#340b590b8a2278a01ef7467c07a16da9b753db24"
+  version "0.8.12"
+  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
   dependencies:
     core-js "^1.0.0"
     isomorphic-fetch "^2.1.1"
@@ -1555,8 +1555,10 @@ nopt@^4.0.1:
     osenv "^0.1.4"
 
 normalize-path@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-2.0.1.tgz#47886ac1662760d4261b7d979d241709d3ce3f7a"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-2.1.1.tgz#1ab28b556e198363a8c1a6f7e6fa20137fe6aed9"
+  dependencies:
+    remove-trailing-separator "^1.0.1"
 
 npmlog@^4.0.2:
   version "4.0.2"
@@ -1618,8 +1620,8 @@ organism-react-apple-device@*:
     react-atomic-molecule "*"
 
 organism-react-event-timeline@*:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/organism-react-event-timeline/-/organism-react-event-timeline-0.0.8.tgz#de0d5f899beaca54271cc17ad3601f803518b748"
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/organism-react-event-timeline/-/organism-react-event-timeline-0.0.10.tgz#df9c148d96b28d9145d99af298e558a2e5ed2507"
   dependencies:
     colorlib "*"
     organism-react-scroll-animate "*"
@@ -1651,16 +1653,16 @@ organism-react-popup@*:
     reduce-flux "*"
 
 organism-react-scroll-animate@*:
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/organism-react-scroll-animate/-/organism-react-scroll-animate-0.0.23.tgz#02f6c5d6298286af607c4735cf16f171bb9e7df2"
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/organism-react-scroll-animate/-/organism-react-scroll-animate-0.0.24.tgz#53e73f184a4c64cbebfcee373f78b4c3ec24389f"
   dependencies:
     organism-react-animate ">=0.0.4"
     organism-react-scroll-nav ">=0.0.18"
     react-atomic-molecule "*"
 
 organism-react-scroll-nav@*, organism-react-scroll-nav@>=0.0.18:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/organism-react-scroll-nav/-/organism-react-scroll-nav-0.2.6.tgz#088f46c86d30640018f52af7c9d457f1633d5bd0"
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/organism-react-scroll-nav/-/organism-react-scroll-nav-0.2.7.tgz#cf3c366081e389a53cb9325705fc6d22a7260627"
   dependencies:
     get-object-value "*"
     get-scroll-info "*"
@@ -1723,8 +1725,8 @@ performance-now@^0.2.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
 pmvc_react_landing@*:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/pmvc_react_landing/-/pmvc_react_landing-0.0.12.tgz#9dc668d11070aae59f0356383f6c59ef9d8c652f"
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/pmvc_react_landing/-/pmvc_react_landing-0.0.13.tgz#1f2e224ee228511b6e90abdee3e092d9a4c8a685"
   dependencies:
     react-atomic-molecule ">=0.0.39"
 
@@ -1762,8 +1764,8 @@ randomatic@^1.1.3:
     kind-of "^3.0.2"
 
 rc@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/rc/-/rc-1.1.7.tgz#c5ea564bb07aff9fd3a5b32e906c1d3a65940fea"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.0.tgz#c7de973b7b46297c041366b2fd3d2363b1697c66"
   dependencies:
     deep-extend "~0.4.0"
     ini "~1.3.0"
@@ -1782,12 +1784,12 @@ react-addons-css-transition-group@*:
     object-assign "^4.1.0"
 
 react-atomic-atom@*:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-atomic-atom/-/react-atomic-atom-1.0.3.tgz#9c2ff7368b30df839421ff850864373d37cd440b"
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-atomic-atom/-/react-atomic-atom-1.0.4.tgz#6b9cc7a96d3e7f2fd3369166e7e2b178a35363ea"
 
 react-atomic-molecule@*, react-atomic-molecule@>=0.0.39, react-atomic-molecule@>=0.0.40:
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/react-atomic-molecule/-/react-atomic-molecule-1.1.18.tgz#5a2928e65246d8bb880955598afe98c3a0caf837"
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/react-atomic-molecule/-/react-atomic-molecule-1.1.19.tgz#286db82e24ee1b428645e50df163f11b379f2faf"
   dependencies:
     class-lib "*"
     exenv "1.2.1"
@@ -1798,8 +1800,8 @@ react-atomic-molecule@*, react-atomic-molecule@>=0.0.39, react-atomic-molecule@>
     ucfirst "*"
 
 react-atomic-organism@*:
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/react-atomic-organism/-/react-atomic-organism-0.0.18.tgz#45a23d8e5f7f365dd3b2e25a14571b7438691f81"
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/react-atomic-organism/-/react-atomic-organism-0.0.19.tgz#d18d9e18cfeb05327222311a64b1c24bb3c121d9"
   dependencies:
     get-object-value "*"
     react-atomic-molecule "*"
@@ -1889,6 +1891,10 @@ regjsparser@^0.1.4:
   resolved "https://registry.yarnpkg.com/regjsparser/-/regjsparser-0.1.5.tgz#7ee8f84dc6fa792d3fd0ae228d24bd949ead205c"
   dependencies:
     jsesc "~0.5.0"
+
+remove-trailing-separator@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.0.1.tgz#615ebb96af559552d4bf4057c8436d486ab63cc4"
 
 repeat-element@^1.1.2:
   version "1.1.2"

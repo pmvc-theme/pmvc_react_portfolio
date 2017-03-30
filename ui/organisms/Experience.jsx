@@ -3,12 +3,41 @@ import { EventTimeline } from 'organism-react-event-timeline';
 import {scrollStore} from 'organism-react-scroll-nav';
 import get from 'get-object-value';
 
+// event link to more
+import smoothScrollTo from 'smooth-scroll-to';
+import getOffset from 'getoffset';
+
 import WhiteBlock from '../molecules/WhiteBlock';
 import Header from '../molecules/AnimateHeader';
 import Content from '../molecules/AnimateContent';
 
+
 class ExperienceBody extends Component
 {
+    eventClick = (e,props) =>
+    {
+        const body = document.body;
+        const dRef = body.querySelector(props.link);
+        const dHeader = body.querySelector("#header");
+        const headerPos = getOffset(dHeader);
+        
+        let i = 3;
+        const tune = (delay) => {
+            if (!i) {
+                return;
+            }
+            i--;
+            let pos = getOffset(dRef);
+            let to = pos.top - (headerPos.bottom-headerPos.top);
+            smoothScrollTo(to, delay, null, ()=>{
+                setTimeout(()=>{
+                    tune(1);
+                },500);
+            });
+        };
+        tune();
+    }
+
     componentDidMount()
     {
         scrollStore.scrollMonitor();
@@ -23,7 +52,8 @@ class ExperienceBody extends Component
                 header: item,
                 description: events.content[k].split('[br]'),
                 from: events.from[k].split(','),
-                to: events.to[k].split(',')
+                to: events.to[k].split(','),
+                link: events.link[k]
             });
         });
         return (
@@ -42,6 +72,7 @@ class ExperienceBody extends Component
                     evenAnimate={{
                         enter: 'fadeInRight'
                     }}
+                    handleEventClick={this.eventClick}
                 />
             </div>
         );

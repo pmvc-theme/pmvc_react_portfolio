@@ -47,8 +47,12 @@ class Body extends Component
                 >
                     {()=><Experience />}
                 </ScrollAnimate>
-                <MyTime />
-                <Detail />
+                <ScrollSpy id="mytime">
+                    <MyTime />
+                </ScrollSpy>
+                <ScrollSpy id="detail">
+                    <Detail />
+                </ScrollSpy>
                 <ScrollSpy id="contact">
                     <Contact {...section.contact} />
                 </ScrollSpy>

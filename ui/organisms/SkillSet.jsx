@@ -15,12 +15,16 @@ import SkillPHPIcon from '../organisms/SkillPHPIcon';
 import SkillJSIcon from '../organisms/SkillJSIcon';
 import SkillHtml5Icon from '../organisms/SkillHtml5Icon';
 import SkillCss3Icon from '../organisms/SkillCss3Icon';
+import SkillReactIcon from '../organisms/SkillReactIcon';
+import SkillReactNativeIcon from '../organisms/SkillReactNativeIcon';
 
 const Icons = {
     php: SkillPHPIcon,
     js: SkillJSIcon,
     html5: SkillHtml5Icon,
-    css3: SkillCss3Icon
+    css3: SkillCss3Icon,
+    react: SkillReactIcon,
+    reactNative: SkillReactNativeIcon
 };
 
 const CardList = (props) =>

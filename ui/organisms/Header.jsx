@@ -25,10 +25,10 @@ class HeaderScroll extends ReshowComponent
         const {brandUrl, freelancerFirstName, freelancerLastName, nav} = this.state;
         reactStyle({
            color: '#00ffea !important' 
-        }, '#'+id+' a:hover', 'header-link');
+        }, '#'+id+' .nav a:hover', 'header-link');
         reactStyle({
            fill: '#00ffea !important' 
-        }, '#'+id+' a:hover svg', 'header-link-svg');
+        }, '#'+id+' .nav a:hover svg', 'header-link-svg');
         let classes;
         if (targetInfo.active || targetInfo.atTop) {
             classes='scrolling';
