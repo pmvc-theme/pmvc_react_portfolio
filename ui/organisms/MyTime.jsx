@@ -12,8 +12,8 @@ class TimeBody extends Component
     
     componentDidMount()
     {
-        System.import('rd3').then((rd3)=>{
-            PieChart = rd3.PieChart;
+        System.import('organism-react-d3-piechart').then((piechart)=>{
+            PieChart = piechart;
             this.setState({'isLoad':true});        
         });
     }
@@ -42,13 +42,14 @@ class TimeBody extends Component
                 <div style={Styles.pie}>
                     <PieChart
                       data={pieData}
-                      width={450}
-                      height={400} 
-                      radius={110}
-                      innerRadius={20}
+                      outerRadius={60}
+                      innerRadius={10}
                       labelTextFill="#fff"
-                      sectorBorderColor="white"
-                      showTooltip={false}
+                      valueTextFill="#fff"
+                      sectorBorderColor="#fff"
+                      style={{
+                        maxWidth: 450
+                      }}
                     />
                 </div>
             </div>

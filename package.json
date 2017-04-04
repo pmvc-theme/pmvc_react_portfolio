@@ -1,6 +1,6 @@
 {
   "name": "pmvc_react_portfolio",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "React portfolio",
   "repository": "pmvc-theme/pmvc_react_portfolio",
   "main": "./build/src/index.js",
@@ -11,9 +11,9 @@
   "author": "Hill <hill@kimo.com>",
   "license": "MIT",
   "dependencies": {
-    "d3": "3.x",
     "organism-react-animate": "*",
     "organism-react-apple-device": "*",
+    "organism-react-d3-piechart": "*",
     "organism-react-event-timeline": "*",
     "organism-react-geometryangle": "*",
     "organism-react-navigation": "*",
@@ -23,7 +23,6 @@
     "organism-react-tag-highlight": "*",
     "organism-react-typing": "*",
     "pmvc_react_landing": "*",
-    "rd3": "*",
     "react-atomic-molecule": "*",
     "react-atomic-organism": "*",
     "reshow": "*",
