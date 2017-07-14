@@ -28,7 +28,7 @@ class TimeBody extends Component
         get(data,['label'], []).forEach((label,num)=>{
             pieData.push({
                 label: get(data,['label', num]),
-                value: get(data,['value', num])
+                value: get(data,['value', num]),
             });    
         });
         return (

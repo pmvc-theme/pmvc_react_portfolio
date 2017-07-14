@@ -1,6 +1,6 @@
 {
   "name": "pmvc_react_portfolio",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "React portfolio",
   "repository": "pmvc-theme/pmvc_react_portfolio",
   "main": "./build/src/index.js",
@@ -47,6 +47,7 @@
   },
   "files": [
     "build",
+    "photos",
     "package.json",
     "README.md"
   ]

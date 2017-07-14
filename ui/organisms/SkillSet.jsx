@@ -31,7 +31,7 @@ const CardList = (props) =>
 {
     const {icon, image, header, content} = props;
     return (
-        <List type="card" className="skillset" styles={injects.cards}> 
+        <List type="cards" className="skillset" styles={injects.cards}> 
             {get(props, ['header'], []).map((item, num)=> {
                 let img;
                 if (get(image,[num])) {
