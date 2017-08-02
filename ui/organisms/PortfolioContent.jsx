@@ -2,7 +2,6 @@ import React from 'react';
 import { Monitor, Browser } from 'organism-react-apple-device';
 import { pageStore } from 'reshow'; 
 import {
-    assign,
     Header,
     Meta,
     Content,
@@ -28,13 +27,10 @@ const PortfolioContent = (props)=>{
             show={true}
         >
             <div style={Styles.container}>
-                <Header style={assign(
-                    Styles.year,
-                    {
-                        borderBottom: '0.5rem solid '+
-                            one.color1
-                    }
-                )}>{one.year}</Header>
+                <Header style={{
+                    ...Styles.year,
+                    borderBottom: '0.5rem solid '+ one.color1
+                }}>{one.year}</Header>
                 <Header style={Styles.header}>{one.header}</Header>
                 <Meta atom="dl" style={Styles.meta}>
                     <dt style={Styles.dt}>{I18N.project}</dt>
@@ -51,18 +47,22 @@ const PortfolioContent = (props)=>{
                     <Item style={Styles.dt}>{I18N.technical}</Item>
                     {one.technical.map((item,key)=><Item style={Styles.dd} key={key+1}>{item}</Item>)}
                 </List>
-                <div style={assign(
-                    {background: one.color1},
-                    Styles.demo
-                )}>
+                <div 
+                    style={{
+                        background: one.color1,
+                        ...Styles.demo
+                    }}
+                >
                     <Monitor>
                         <img className="pure-img" src={one.cover} /> 
                     </Monitor>
                 </div>
-                <div style={assign(
-                    {background: one.color2},
-                    Styles.demo
-                )}>
+                <div 
+                    style={{
+                        background: one.color2,
+                        ...Styles.demo
+                    }}
+                >
                     {one.pages.map((item,key)=>
                         <Browser key={key}>
                             <img className="pure-img" src={item} /> 

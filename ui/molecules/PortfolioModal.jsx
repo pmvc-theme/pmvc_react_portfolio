@@ -3,7 +3,7 @@ import {
     PopupModal
 } from 'organism-react-popup';
 
-import {assign, lazyInject} from 'react-atomic-molecule';
+import {lazyInject} from 'react-atomic-molecule';
 import XIco from 'ricon/X';
 
 let injects;
@@ -53,11 +53,10 @@ class PortfolioModal extends Component
             onMouseLeave={
                 this.xIcoLeave.bind(this)
             } 
-            style={assign(
-                {},
-                Styles.x,
-                xIcoHover
-            )}
+            style={{
+                ...Styles.x,
+                ...xIcoHover
+            }}
             size="75px"
             weight=".1rem"
         />;
