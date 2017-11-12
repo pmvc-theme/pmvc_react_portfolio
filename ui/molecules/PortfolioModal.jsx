@@ -69,6 +69,7 @@ class PortfolioModal extends Component
                 fullScreenStyle={Styles.fullScreen}
                 className="basic"
                 closeEl={xico}
+                scrolling={true}
             >
                 {children}
             </PopupModal>

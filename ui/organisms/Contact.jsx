@@ -124,7 +124,7 @@ const Styles = {
         overflow: 'hidden',
     },
     inside: {
-        maxWidth: '930px',
+        maxWidth: 930,
         margin: '0 auto'
     },
     block: {

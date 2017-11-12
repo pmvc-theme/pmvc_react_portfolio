@@ -70,7 +70,7 @@ class PortfolioList extends PopupMonitor
     {
         const {header, keys, ...props} = this.props;
         return (
-            <List type="card" styles={injects.cards} className="portfolio"> 
+            <List type="cards" styles={injects.cards} className="portfolio"> 
             {get(props, ['image'], []).map((item, num)=>
                 <HoverDimmerCardView
                     key={num}

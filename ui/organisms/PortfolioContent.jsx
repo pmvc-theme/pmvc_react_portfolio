@@ -53,9 +53,11 @@ const PortfolioContent = (props)=>{
                         ...Styles.demo
                     }}
                 >
-                    <Monitor>
-                        <img className="pure-img" src={one.cover} /> 
-                    </Monitor>
+                    <div style={Styles.demoInner}>
+                        <Monitor style={{display: 'inline-block'}}>
+                            <img style={Styles.img} src={one.cover} /> 
+                        </Monitor>
+                    </div>
                 </div>
                 <div 
                     style={{
@@ -63,11 +65,13 @@ const PortfolioContent = (props)=>{
                         ...Styles.demo
                     }}
                 >
-                    {one.pages.map((item,key)=>
-                        <Browser key={key}>
-                            <img className="pure-img" src={item} /> 
-                        </Browser>
-                    )}
+                    <div style={Styles.demoInner}>
+                        {one.pages.map((item,key)=>
+                            <Browser key={key}>
+                                <img style={Styles.img} src={item} /> 
+                            </Browser>
+                        )}
+                    </div>
                 </div>
             </div>
         </PortfolioModal>
@@ -121,6 +125,13 @@ const Styles = {
         marginBottom: '2.5rem'
     },
     demo: {
-        padding: '1rem'
+        padding: '1rem',
+    },
+    demoInner: {
+        maxWidth: 930,
+        margin: '0 auto'
+    },
+    img: {
+        verticalAlign: 'bottom'
     }
 };

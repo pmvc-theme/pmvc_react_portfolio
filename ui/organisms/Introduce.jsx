@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Typing from "organism-react-typing";
 import get from 'get-object-value';
+import { 
+   SemanticUI 
+} from 'react-atomic-molecule';
 
 class Introduce extends Component
 {
@@ -17,7 +20,7 @@ class Introduce extends Component
     {
         const {bd, ...props} = this.props;
         return (
-            <div style={Styles.container} className="introduce">
+            <SemanticUI style={Styles.container} className="introduce">
                 <div className="hd" style={Styles.hd}>
                     {props.hd}
                 </div>
@@ -35,7 +38,7 @@ class Introduce extends Component
                 <div className="ft" style={Styles.ft}>
                     {props.ft}
                 </div>
-            </div>
+            </SemanticUI>
         );
     }
 }

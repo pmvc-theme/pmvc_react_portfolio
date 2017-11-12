@@ -28,8 +28,18 @@ class Body extends Component
         return (
             <SemanticUI>
                 <ScrollSpy id="design">
-                    <HeaderContent {...section.design} />
-                    <Portfolio {...section.portfolio} />
+                    <SvgBlackBlock name="design">
+                        <HeaderContent />
+                    </SvgBlackBlock>
+                    <WhiteBlock 
+                        name="portfolio" 
+                        style={{
+                            padding: '40px 0',
+                            maxWidth: null
+                        }}
+                    >
+                        <Portfolio />
+                    </WhiteBlock>
                 </ScrollSpy>
                 <ScrollSpy id="about-me">
                     <SvgBlackBlock name="aboutme">

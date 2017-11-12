@@ -2,23 +2,18 @@ import React, {Component} from 'react';
 import { Header, Content } from 'react-atomic-molecule';
 import Animate from "organism-react-scroll-animate";
 import HighLighter from 'organism-react-tag-highlight';
-import { ContentBlock } from 'pmvc_react_landing';
-
-import SvgBlackBlock from '../molecules/SvgBlackBlock';
 
 const HeaderContent = (props) => ( 
-    <SvgBlackBlock style={Styles.container}>
-        <Animate enter="fadeInDown">
-            <Header ui={false} style={Styles.header}>
-                <HighLighter bStyle={Styles.b}>
-                    {props.header}
-                </HighLighter>
-            </Header>
-            <Content style={Styles.content}>
-                {props.content}
-            </Content>
-        </Animate>
-    </SvgBlackBlock>
+    <Animate enter="fadeInDown" style={Styles.container}>
+        <Header ui={false} style={Styles.header}>
+            <HighLighter bStyle={Styles.b}>
+                {props.header}
+            </HighLighter>
+        </Header>
+        <Content style={Styles.content}>
+            {props.content}
+        </Content>
+    </Animate>
 );
 
 export default HeaderContent;
