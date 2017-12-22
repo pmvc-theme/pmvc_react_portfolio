@@ -1,7 +1,7 @@
 import React, {Component} from 'react'; 
 import {OneColumn} from 'pmvc_react_landing'; 
 import { min, reactStyle } from 'react-atomic-molecule';
-import { PopupElement } from "organism-react-popup"
+import { PopupPool } from "organism-react-popup"
 import { scrollDispatch } from 'organism-react-scroll-nav';
 import Header from '../organisms/Header'; 
 import Footer from '../organisms/Footer'; 
@@ -26,7 +26,7 @@ export default class PortfolioLayout extends Component
                     {...rest}
                     header={<Header />}
                     footer={<Footer />}
-                    last={<PopupElement />}
+                    last={<PopupPool />}
                 />;
         }
     }

@@ -3,39 +3,17 @@ import { EventTimeline } from 'organism-react-event-timeline';
 import {scrollStore} from 'organism-react-scroll-nav';
 import get from 'get-object-value';
 
-// event link to more
-import smoothScrollTo from 'smooth-scroll-to';
-import getOffset from 'getoffset';
 
 import WhiteBlock from '../molecules/WhiteBlock';
 import Header from '../molecules/AnimateHeader';
 import Content from '../molecules/AnimateContent';
-
+import goTo from '../../src/goTo';
 
 class ExperienceBody extends Component
 {
-    eventClick = (e,props) =>
+    eventClick = (e, props) =>
     {
-        const body = document.body;
-        const dRef = body.querySelector(props.link);
-        const dHeader = body.querySelector("#header");
-        const headerPos = getOffset(dHeader);
-        
-        let i = 3;
-        const tune = (delay) => {
-            if (!i) {
-                return;
-            }
-            i--;
-            let pos = getOffset(dRef);
-            let to = pos.top - (headerPos.bottom-headerPos.top);
-            smoothScrollTo(to, delay, null, ()=>{
-                setTimeout(()=>{
-                    tune(200);
-                },500);
-            });
-        };
-        tune();
+        goTo(props.link);
     }
 
     componentDidMount()

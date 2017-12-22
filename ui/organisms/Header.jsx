@@ -78,7 +78,8 @@ const Styles = {
         background: '#000',
         maxHeight: '60px',
         boxSizing: 'border-box',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        position: 'fixed'
     },
     headerNav: {
         padding:0,

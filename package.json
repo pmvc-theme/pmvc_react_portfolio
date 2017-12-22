@@ -1,6 +1,6 @@
 {
   "name": "pmvc_react_portfolio",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "React portfolio",
   "repository": "pmvc-theme/pmvc_react_portfolio",
   "main": "./build/src/index.js",
@@ -11,6 +11,7 @@
   "author": "Hill <hill@kimo.com>",
   "license": "MIT",
   "dependencies": {
+    "css-query-selector": "*",
     "organism-react-animate": "*",
     "organism-react-apple-device": "*",
     "organism-react-d3-piechart": "*",
