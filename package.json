@@ -1,6 +1,6 @@
 {
   "name": "pmvc_react_portfolio",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "React portfolio",
   "repository": "pmvc-theme/pmvc_react_portfolio",
   "main": "./build/src/index.js",
