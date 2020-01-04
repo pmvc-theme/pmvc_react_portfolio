@@ -19,7 +19,7 @@ class PortfolioModal extends Component
         );
     }
 
-    componentWillReceiveProps(newProps)
+    componentDidUpdate(prevProps, prevState, snapshot)
     {
         this.setState({
             xIcoHoverStyle: null 

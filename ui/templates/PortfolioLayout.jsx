@@ -40,7 +40,7 @@ const Styles = {
         background: 'transparent !important',
         padding: '1.07rem 3rem',
         maxHeight: '100% !important',
-    }, [min.lg, '.page-header']),
+    }, [min.lg, '.page-header, .page-header.active']),
     minLgHeaderScrolling: reactStyle({
         padding: '0 1.75rem !important',
         background: '#000 !important'

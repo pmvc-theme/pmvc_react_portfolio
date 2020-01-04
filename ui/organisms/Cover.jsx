@@ -1,36 +1,27 @@
-import React, {Component} from 'react'; 
+import React, {PureComponent} from 'react'; 
 
 import Geometryangle from 'organism-react-geometryangle';
 import { SplashBlock } from 'pmvc_react_landing';
 import { ScrollReceiver } from 'organism-react-scroll-nav';
-import { reshow, ReshowComponent } from 'reshow'; 
+import { Return } from 'reshow'; 
 
 import Me from '../organisms/Me';
 import Introduce from '../organisms/Introduce';
 
-class Cover extends ReshowComponent 
+class Cover extends PureComponent 
 {
-    static get initStates()
-    {
-        return ['me', 'introduce'];
-    }
+    state = {isRun: true};
 
-    constructor(props)
+    componentDidUpdate(prevProps, prevState, snapshot)
     {
-        super(props);
-        this.state = {
-            isRun: true
-        };
-    }
-
-    componentWillReceiveProps(nextProps)
-    {
-        const {targetInfo} = nextProps;
+        const {targetInfo} = this.props;
         if (targetInfo.active || targetInfo.atTop) {
-            this.geo.stop();
-            this.setState({
-                isRun: false   
-            });
+            if (prevState.isRun) {
+              this.geo.stop();
+              this.setState({
+                  isRun: false   
+              });
+            }
         } else {
             this.geo.start();
             this.setState({
@@ -41,8 +32,7 @@ class Cover extends ReshowComponent
     
     render()
     {
-        const {me, introduce} = this.state;
-        const props = this.props;
+        const {me, introduce} = this.props;
         return (
         <SplashBlock style={Styles.container}>
             <Me
@@ -56,14 +46,13 @@ class Cover extends ReshowComponent
     }
 };
 
-const CoverContainer = reshow(Cover);
 
 const ScrollCover = (props) =>
     <ScrollReceiver
         {...props}
         targetId="design"
         scrollMargin={0}
-        container={<CoverContainer />}
+        container={<Return initStates={['me', 'introduce']}><Cover /></Return>}
     />
 
 export default ScrollCover;

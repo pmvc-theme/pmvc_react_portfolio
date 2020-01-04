@@ -1,8 +1,8 @@
-import React from 'react'; 
+import React, {PureComponent} from 'react'; 
 import get from 'get-object-value';
 import { CardView } from 'react-atomic-organism';
 import { List, Unsafe } from 'react-atomic-molecule';
-import { reshow, ReshowComponent } from 'reshow'; 
+import { Return } from 'reshow'; 
 
 import Header from '../molecules/AnimateHeader';
 import Content from '../molecules/AnimateContent';
@@ -30,12 +30,8 @@ const ItemList = ({header, content, contents, id, anchor}) =>
     );
 }
 
-class DetailBody extends ReshowComponent
+class DetailBody extends PureComponent
 {
-    static get initStates()
-    {
-        return ['anchor'];
-    }
 
     componentDidMount()
     {
@@ -68,11 +64,10 @@ class DetailBody extends ReshowComponent
     }
 }
 
-const DetailBodyConnected = reshow(DetailBody);
 
 const Detail = (props) =>
     <Section name="detail">
-    <DetailBodyConnected {...props} />
+    <Return initStates={['anchor']}><DetailBody {...props} /></Return>
     </Section>
 
 export default Detail;

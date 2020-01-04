@@ -1,28 +1,17 @@
-import React,{Component} from 'react'; 
+import React, {lazy, Suspense, PureComponent} from 'react'; 
 import get from 'get-object-value';
 
 import Header from '../molecules/AnimateHeader';
 import Content from '../molecules/AnimateContent';
 import Section from '../molecules/SvgBlackBlock';
 
-var PieChart;
+const PieChart = lazy(()=>import('organism-react-d3-piechart'));
 
-class TimeBody extends Component
+class TimeBody extends PureComponent
 {
     
-    componentDidMount()
-    {
-        System.import('organism-react-d3-piechart').then((piechart)=>{
-            PieChart = piechart;
-            this.setState({'isLoad':true});        
-        });
-    }
-
     render()
     {
-        if (!get(this, ['state', 'isLoad'])) {
-            return null;
-        }
         const {header, content, data} = this.props;
         let pieData = [];
         get(data,['label'], []).forEach((label,num)=>{
@@ -40,6 +29,7 @@ class TimeBody extends Component
                     {content}
                 </Content>
                 <div style={Styles.pie}>
+                  <Suspense fallback={<div />}>
                     <PieChart
                       data={pieData}
                       outerRadius={60}
@@ -51,6 +41,7 @@ class TimeBody extends Component
                         maxWidth: 450
                       }}
                     />
+                  </Suspense>
                 </div>
             </div>
         );

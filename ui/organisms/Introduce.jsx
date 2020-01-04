@@ -7,9 +7,9 @@ import {
 
 class Introduce extends Component
 {
-    componentWillReceiveProps(nextProps)
+    componentDidUpdate(prevProps, prevState, snapshot)
     {
-        if (nextProps.isRun) {
+        if (this.props.isRun) {
             this.type.start();
         } else {
             this.type.stop();

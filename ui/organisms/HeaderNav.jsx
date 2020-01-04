@@ -41,7 +41,7 @@ const NavItem = (props) => {
 
 const HeaderNav = (props) => (
     <List
-        atom="ul"
+        atom="nav"
         style={props.style}
         className={props.className}
     >
