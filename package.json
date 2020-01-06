@@ -1,6 +1,6 @@
 {
   "name": "pmvc_react_portfolio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React portfolio",
   "repository": "pmvc-theme/pmvc_react_portfolio",
   "main": "./build/src/index.js",
@@ -26,7 +26,6 @@
     "pmvc_react_landing": "*",
     "react-atomic-molecule": "*",
     "react-atomic-organism": "*",
-    "reshow": "*",
     "ricon": "*"
   },
   "devDependencies": {

@@ -19,7 +19,6 @@ const NavItem = (props) => {
     let style = {...Styles.link,...activeStyle};
     return (
     <Item 
-        atom="li"
         {...others}
         style={Styles.item}
         onClick={(e)=>{
