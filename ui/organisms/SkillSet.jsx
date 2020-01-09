@@ -1,6 +1,7 @@
-import React, {Component} from 'react'; 
+import React from 'react'; 
 import { CardView } from 'react-atomic-organism';
 import { 
+    build,
     lazyInject,
     Image,
     List,
@@ -16,15 +17,31 @@ import SkillJSIcon from '../organisms/SkillJSIcon';
 import SkillHtml5Icon from '../organisms/SkillHtml5Icon';
 import SkillCss3Icon from '../organisms/SkillCss3Icon';
 import SkillReactIcon from '../organisms/SkillReactIcon';
+import SkillReactHookIcon from '../organisms/SkillReactHookIcon';
 import SkillReactNativeIcon from '../organisms/SkillReactNativeIcon';
+import SkillDockerIcon from '../organisms/SkillDockerIcon';
+import SkillKubernetesIcon from '../organisms/SkillKubernetesIcon';
+import SkillDroneIcon from '../organisms/SkillDroneIcon';
+import SkillGaIcon from '../organisms/SkillGaIcon';
+import SkillAbTestIcon from '../organisms/SkillAbTestIcon';
+import SkillWordpressIcon from '../organisms/SkillWordpressIcon';
+import SkillD3JsIcon from '../organisms/SkillD3JsIcon';
 
 const Icons = {
     php: SkillPHPIcon,
     js: SkillJSIcon,
     html5: SkillHtml5Icon,
     css3: SkillCss3Icon,
+    ga: SkillGaIcon, 
+    docker: SkillDockerIcon,
+    k8s: SkillKubernetesIcon, 
+    drone: SkillDroneIcon,
     react: SkillReactIcon,
-    reactNative: SkillReactNativeIcon
+    reactHook: SkillReactHookIcon,
+    reactNative: SkillReactNativeIcon,
+    abTest: SkillAbTestIcon,
+    wordpress: SkillWordpressIcon,
+    d3Js: SkillD3JsIcon
 };
 
 const CardList = (props) =>
@@ -33,6 +50,7 @@ const CardList = (props) =>
     return (
         <List type="cards" className="skillset" styles={injects.cards}> 
             {get(props, ['header'], []).map((item, num)=> {
+                const iconName = icon[num];
                 let img;
                 if (get(image,[num])) {
                     return (
@@ -45,13 +63,12 @@ const CardList = (props) =>
                         />
                     );
                 } else {
-                    const build = React.createElement;
                     return (
                         <Card
                             key={num}
                             style={Styles.card}
                         >
-                            {build(Icons[icon[num]])}
+                            {build(Icons[iconName])({name: iconName})}
                             <Header>{header[num]}</Header>
                             <Description>{content[num]}</Description>
                         </Card>

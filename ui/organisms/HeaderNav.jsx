@@ -82,6 +82,7 @@ const Styles = {
     },
     item: {
         listStyle: 'none',
+        padding: 0 
     },
     icon: {
         width: 13,

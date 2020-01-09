@@ -19,7 +19,6 @@ export default AnimateContent;
 const Styles = {
     text: {
         fontFamily: "Raleway,sans-serif",
-        textAlign: "center",
         fontSize: "1.125rem",
         lineHeight: 1.7,
     }

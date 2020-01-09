@@ -27,6 +27,7 @@ class Introduce extends Component
                 <div className="bd" style={Styles.bd}>
                     {get(bd, ['fixed'])}
                     <Typing
+                        sec={get(bd, ['aniSec'], 3)}
                         color="#fff"
                         ref={el=>this.type=el}
                     >

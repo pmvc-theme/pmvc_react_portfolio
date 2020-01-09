@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-
 import {Return} from 'reshow';
+import {Description} from 'react-atomic-molecule';
 import get from 'get-object-value';
 
 const Body = props => {
   const I18N = get(props, ['I18N'], {});
-  return <div style={Styles.container}>{I18N.footerText}</div>;
+  return <div style={Styles.container}><Description>{I18N.footerText?.split('[br]')}</Description></div>;
 };
 
 const Footer = () => (
@@ -18,9 +18,10 @@ export default Footer;
 
 const Styles = {
   container: {
+    paddingTop: 70,
     minHeight: 150,
+    boxSizing: 'border-box',
     background: '#000',
-    lineHeight: '150px',
     fontSize: '.75rem',
     color: '#afafaf',
     textAlign: 'center',

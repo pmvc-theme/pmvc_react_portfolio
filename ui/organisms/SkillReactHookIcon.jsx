@@ -2,12 +2,12 @@ import React from 'react';
 
 import SkillIcon from '../molecules/SkillIcon'; 
 
-const SkillReactIcon = props =>
+const SkillReactIcon = (props) =>
 <SkillIcon
-    {...props}
     color="#484848"
     textStyle={{fill: '#61dafb'}}
-    text="React"
+    text={["React", "Hook"]}
+    transform='translate(50, 15)'
 />
 
 export default SkillReactIcon;
