@@ -84,6 +84,7 @@ const Styles = {
     padding: '0 10px',
   },
   selected: {
+    padding: 10,
     background: 'rgba(0,0,0,.05)',
   },
 };
