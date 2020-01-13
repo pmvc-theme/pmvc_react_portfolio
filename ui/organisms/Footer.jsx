@@ -1,15 +1,24 @@
 import React, {Component} from 'react';
 import {Return} from 'reshow';
-import {Description} from 'react-atomic-molecule';
+import {Description, Icon} from 'react-atomic-molecule';
 import get from 'get-object-value';
+import Git from 'ricon/Git';
 
-const Body = props => {
-  const I18N = get(props, ['I18N'], {});
-  return <div style={Styles.container}><Description>{I18N.footerText?.split('[br]')}</Description></div>;
+const Body = ({I18N, GIT}) => {
+  return (
+    <div style={Styles.container}>
+      <Description>{I18N?.footerText?.split('[br]')}</Description>
+      {GIT && (
+        <Icon style={Styles.icon} atom="a" href={GIT} target="_blank">
+          <Git />
+        </Icon>
+      )}
+    </div>
+  );
 };
 
 const Footer = () => (
-  <Return>
+  <Return initStates={['I18N', 'GIT']}>
     <Body />
   </Return>
 );
@@ -27,5 +36,10 @@ const Styles = {
     textAlign: 'center',
     textTransform: 'uppercase',
     letterSpacing: '0.069rem',
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    fill: '#fff',
   },
 };
