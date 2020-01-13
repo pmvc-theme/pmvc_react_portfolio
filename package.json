@@ -11,8 +11,8 @@
   "author": "Hill <hill@kimo.com>",
   "license": "MIT",
   "dependencies": {
-    "marked": "*",
     "css-query-selector": "*",
+    "marked": "*",
     "organism-react-animate": "*",
     "organism-react-apple-device": "*",
     "organism-react-d3-piechart": "*",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "react": "^16.x",
     "react-dom": "^16.x",
-    "reshow-app": "*"
+    "reshow-app": "^0.13.0-beta"
   },
   "scripts": {
     "build": "rm -rf build && BABEL_ENV=build babel ui -d build/ui && BABEL_ENV=build babel src -d build/src",

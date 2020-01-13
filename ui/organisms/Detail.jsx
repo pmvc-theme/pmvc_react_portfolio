@@ -98,4 +98,10 @@ const InjectStyles = {
     },
     '.ui.items.more>.item>.content>.description'
   ],
+  meta: [
+    {
+      color: '#000 !important'
+    },
+    '.ui.items>.item .meta'
+  ],
 };
