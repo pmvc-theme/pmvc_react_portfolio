@@ -18,7 +18,7 @@ class ExperienceBody extends Component
 
     componentDidMount()
     {
-        scrollStore.scrollMonitor();
+        scrollStore.scroller.scrollMonitor();
     }
 
     render()

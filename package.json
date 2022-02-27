@@ -1,9 +1,10 @@
 {
   "name": "pmvc_react_portfolio",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "React portfolio",
   "repository": "pmvc-theme/pmvc_react_portfolio",
-  "main": "./build/src/index.js",
+  "main": "./build/cjs/src/index.js",
+  "module": "./build/es/src/index.js",
   "keywords": [
     "react",
     "react-component"
@@ -32,10 +33,17 @@
   "devDependencies": {
     "react": "^16.x",
     "react-dom": "^16.x",
-    "reshow-app": "^0.13.0-beta"
+    "reshow-app": "*"
   },
   "scripts": {
-    "build": "rm -rf build && BABEL_ENV=build babel ui -d build/ui && BABEL_ENV=build babel src -d build/src",
+    "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",
+    "build:cjs:src": "BABEL_ENV=cjs babel src -d build/cjs/src",
+    "build:cjs:ui": "BABEL_ENV=cjs babel ui -d build/cjs/ui",
+    "build:cjs": "npm run build:cjs:src && npm run build:cjs:ui",
+    "build:es:src": "BABEL_ENV=es babel src -d build/es/src",
+    "build:es:ui": "BABEL_ENV=es babel ui -d build/es/ui",
+    "build:es": "npm run build:es:src && npm run build:es:ui",
+    "build": "npm run clean && npm run build:cjs && npm run build:es",
     "prepublish": "npm run build"
   },
   "files": [
