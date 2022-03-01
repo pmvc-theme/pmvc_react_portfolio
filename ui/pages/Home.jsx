@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { SemanticUI } from "react-atomic-molecule";
 import { pageStore, Section } from "reshow";
 import { ScrollSpy } from "organism-react-scroll-nav";
@@ -64,56 +64,6 @@ const Body = (props) => {
     </SemanticUI>
   );
 };
-
-class xBody extends Component {
-  render() {
-    const I18N = pageStore.getMap("I18N");
-    const section = pageStore.getMap("section");
-    return (
-      <SemanticUI>
-        <ScrollSpy id="design">
-          <SvgBlackBlock name="design">
-            <HeaderContent />
-          </SvgBlackBlock>
-          <WhiteBlock
-            name="portfolio"
-            style={{
-              padding: "40px 0",
-              maxWidth: null,
-            }}
-          >
-            <Portfolio />
-          </WhiteBlock>
-        </ScrollSpy>
-        <ScrollSpy id="about-me">
-          <SvgBlackBlock name="aboutme">
-            <AboutMe />
-          </SvgBlackBlock>
-          <WhiteBlock name="skillset">
-            <SkillSet />
-          </WhiteBlock>
-        </ScrollSpy>
-        <ScrollAnimate
-          scrollMargin={-100}
-          id="experience"
-          monitorScroll={true}
-          style={{ background: "#3C5B65" }}
-        >
-          {() => <Experience />}
-        </ScrollAnimate>
-        <ScrollSpy id="mytime">
-          <MyTime />
-        </ScrollSpy>
-        <ScrollSpy id="detail">
-          <Detail />
-        </ScrollSpy>
-        <ScrollSpy id="contact">
-          <Contact {...section.contact} />
-        </ScrollSpy>
-      </SemanticUI>
-    );
-  }
-}
 
 const Home = () => (
   <PortfolioLayout

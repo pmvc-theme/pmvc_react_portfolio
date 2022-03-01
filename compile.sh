@@ -2,9 +2,9 @@
 
 DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 
-production(){
-    echo "Production Mode";
-    NODE_ENV=production webpack -p 
+
+killBy(){
+    ps -eo pid,args | grep $1 | grep -v grep | awk '{print $1}' | xargs -I{} kill -9 {}
 }
 
 stop(){
@@ -27,12 +27,12 @@ watch(){
 }
 
 case "$1" in
+  stop)
+    stop
+    ;;
   watch)
     stop
     watch 
-    ;;
-  p)
-    production
     ;;
   *)
     develop
