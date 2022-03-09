@@ -44,7 +44,7 @@ class PortfolioList extends PopupMonitor {
 
   constructor(props) {
     super(props);
-    injects = lazyInject(injects, InjectStyles);
+    injects = lazyInject(InjectStyles, injects);
   }
 
   render() {

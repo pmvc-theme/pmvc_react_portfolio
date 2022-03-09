@@ -6,7 +6,6 @@ import {
 import {lazyInject} from 'react-atomic-molecule';
 import XIco from 'ricon/X';
 
-let injects;
 
 class PortfolioModal extends Component
 {
@@ -14,8 +13,8 @@ class PortfolioModal extends Component
     {
         super(props);
         injects = lazyInject(
-            injects,
-            InjectStyles
+            InjectStyles,
+            injects
         );
     }
 
@@ -102,6 +101,7 @@ const Styles = {
     }
 };
 
+let injects;
 const InjectStyles = {
     fullScreen: [
         {

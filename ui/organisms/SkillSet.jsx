@@ -83,8 +83,8 @@ const SkillSet = (props) =>
 {
     const {cards} = props;
     injects = lazyInject(
+        InjectStyles,
         injects,
-        InjectStyles
     );
     return (
         <CardList {...cards}/>

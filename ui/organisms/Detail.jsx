@@ -44,7 +44,7 @@ const ItemList = ({ header, content, meta, id, anchor }) => {
 class DetailBody extends PureComponent {
   constructor(props) {
     super(props);
-    injects = lazyInject(injects, InjectStyles);
+    injects = lazyInject(InjectStyles, injects);
   }
   componentDidMount() {
     if (!isLoadUrl) {
