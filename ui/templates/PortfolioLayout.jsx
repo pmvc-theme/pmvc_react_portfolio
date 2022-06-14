@@ -10,7 +10,7 @@ const PortfolioLayout = ({ column, ...rest }) => {
   const init = useRef();
   if (!init.current) {
     init.current = true;
-    scrollStore.scroller.dispatch({scrollMargin: 50});
+    setTimeout(()=>scrollStore.scroller.dispatch({scrollMargin: 50}));
   }
 
   switch (column) {
