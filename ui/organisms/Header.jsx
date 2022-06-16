@@ -1,33 +1,41 @@
-import React, {PureComponent} from 'react';
-import {reactStyle, mixClass, SemanticUI} from 'react-atomic-molecule';
-import {Return} from 'reshow';
-import {PageHeader} from 'pmvc_react_landing';
-import {ScrollReceiver} from 'organism-react-scroll-nav';
-import {HorizontalToVerticalMenu} from 'organism-react-navigation';
+import React, { PureComponent } from "react";
+import { reactStyle, mixClass, SemanticUI } from "react-atomic-molecule";
+import { Return } from "reshow";
+import { PageHeader } from "pmvc_react_landing";
+import { ScrollReceiver } from "organism-react-scroll-nav";
+import { HorizontalToVerticalMenu } from "organism-react-navigation";
 
-import Brand from '../organisms/Brand';
-import HeaderNav from '../organisms/HeaderNav';
+import Brand from "../organisms/Brand";
+import HeaderNav from "../organisms/HeaderNav";
 
 class HeaderScroll extends PureComponent {
   render() {
-    const {brandUrl, freelancerFirstName, freelancerLastName, nav ,targetInfo, id, ...others} = this.props;
+    const {
+      brandUrl,
+      freelancerFirstName,
+      freelancerLastName,
+      nav,
+      targetInfo,
+      id,
+      ...others
+    } = this.props;
     reactStyle(
       {
-        color: '#00ffea !important',
+        color: "#00ffea !important",
       },
-      '#' + id + ' .nav a:hover',
-      'header-link',
+      "#" + id + " .nav a:hover",
+      "header-link"
     );
     reactStyle(
       {
-        fill: '#00ffea !important',
+        fill: "#00ffea !important",
       },
-      '#' + id + ' .nav a:hover svg',
-      'header-link-svg',
+      "#" + id + " .nav a:hover svg",
+      "header-link-svg"
     );
     let classes;
     if (targetInfo.active || targetInfo.atTop) {
-      classes = 'scrolling';
+      classes = "scrolling";
     }
     return (
       <HorizontalToVerticalMenu
@@ -57,7 +65,7 @@ class HeaderScroll extends PureComponent {
   }
 }
 
-const Header = props => (
+const Header = (props) => (
   <ScrollReceiver
     id="header"
     targetId="design"
@@ -65,11 +73,12 @@ const Header = props => (
     container={
       <Return
         initStates={[
-          'brandUrl',
-          'freelancerFirstName',
-          'freelancerLastName',
-          'nav',
-        ]}>
+          "brandUrl",
+          "freelancerFirstName",
+          "freelancerLastName",
+          "nav",
+        ]}
+      >
         <HeaderScroll />
       </Return>
     }
@@ -80,15 +89,15 @@ export default Header;
 
 const Styles = {
   container: {
-    background: '#000',
-    maxHeight: '60px',
-    boxSizing: 'border-box',
-    overflow: 'hidden',
-    position: 'fixed',
+    background: "#000",
+    maxHeight: "60px",
+    boxSizing: "border-box",
+    overflow: "hidden",
+    position: "fixed",
   },
   headerNav: {
     padding: 0,
     margin: 0,
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
   },
 };

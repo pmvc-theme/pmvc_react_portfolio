@@ -1,14 +1,16 @@
-import React, { PureComponent } from "react";
-import get from "get-object-value";
+import { useEffect, useRef } from "react";
 import { CardView } from "react-atomic-organism";
-import { lazyInject, List, Unsafe } from "react-atomic-molecule";
+import { useLazyInject, List, Unsafe } from "react-atomic-molecule";
 import { Return } from "reshow";
+import { UrlReturn } from "reshow-url";
 import { marked } from "marked";
+import get from "get-object-value";
 
 import Header from "../molecules/AnimateHeader";
 import Content from "../molecules/AnimateContent";
 import Section from "../molecules/WhiteBlock";
-import { handleWithUrl } from "../../src/goTo";
+
+let isInit;
 
 marked.setOptions({
   gfm: true,
@@ -30,52 +32,45 @@ const ItemList = ({ header, content, meta, id, anchor }) => {
           header={header[key]}
           headerProps={{ ui: false }}
           meta={meta[key]}
+          metaProps={{ style: { fontWeight: 900 } }}
           description={<Unsafe>{marked(content[key])}</Unsafe>}
           lineAtom="p"
           item={true}
           id={id[key]}
-          key={key}
+          key={meta[key]}
         />
       ))}
     </List>
   );
 };
 
-class DetailBody extends PureComponent {
-  constructor(props) {
-    super(props);
-    injects = lazyInject(InjectStyles, injects);
-  }
-  componentDidMount() {
-    if (!isLoadUrl) {
-      isLoadUrl = handleWithUrl();
+const DetailBody = (props) => {
+  const { anchor, header, content, items } = props;
+  useEffect(() => {
+    if (!isInit) {
+      isInit = true;
+      console.log({ anchor });
     }
-  }
-  componentDidUpdate() {
-    if (!isLoadUrl) {
-      isLoadUrl = handleWithUrl();
-    }
-  }
+  }, []);
+  return (
+    <div>
+      <Header style={Styles.header}>{header}</Header>
+      <Content style={Styles.content}>{content}</Content>
+      <ItemList {...{ ...items, anchor }} />
+    </div>
+  );
+};
 
-  render() {
-    const { anchor, header, content, items } = this.props;
-    return (
-      <div>
-        <Header style={Styles.header}>{header}</Header>
-        <Content style={Styles.content}>{content}</Content>
-        <ItemList {...{ ...items, anchor }} />
-      </div>
-    );
-  }
-}
-
-const Detail = (props) => (
-  <Section name="detail">
-    <Return initStates={["anchor"]}>
-      <DetailBody {...props} />
-    </Return>
-  </Section>
-);
+const Detail = (props) => {
+  injects = useLazyInject(InjectStyles, injects);
+  return (
+    <Section name="detail">
+      <UrlReturn initStates={{ ":hash": "anchor" }}>
+        <DetailBody {...props} />
+      </UrlReturn>
+    </Section>
+  );
+};
 
 export default Detail;
 
@@ -84,8 +79,9 @@ const Styles = {
     padding: "0 10px",
   },
   selected: {
-    padding: 10,
-    background: "rgba(0,0,0,.05)",
+    padding: 20,
+    background: "#f5f5dc",
+    fontSize: "1.5rem",
   },
 };
 
@@ -94,7 +90,7 @@ const InjectStyles = {
   desc: [
     {
       color: "rgba(0,0,0,.5)",
-      fontSize: ".9rem",
+      fontSize: "1.15rem",
     },
     ".ui.items.more>.item>.content>.description",
   ],

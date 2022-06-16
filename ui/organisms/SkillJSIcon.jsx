@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import SkillIcon from '../molecules/SkillIcon'; 
+import SkillIcon from "../molecules/SkillIcon";
 
-const SkillJSIcon = props =>
-<SkillIcon
+const SkillJSIcon = (props) => (
+  <SkillIcon
     color="#f5da55"
-    text={['Vanilla', 'JS']}
-    transform='translate(50, 15)'
-    textStyle={{fill:'#181917'}}
+    text={["Vanilla", "JS"]}
+    transform="translate(50, 15)"
+    textStyle={{ fill: "#181917" }}
     {...props}
-/>
+  />
+);
 
 export default SkillJSIcon;

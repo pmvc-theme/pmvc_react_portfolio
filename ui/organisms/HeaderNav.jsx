@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import { List, Item, Icon } from "react-atomic-molecule";
 import { SmoothScrollLink } from "organism-react-scroll-nav";
 import get from "get-object-value";
+import callfunc from "call-func";
 
 import IcoDescription from "ricon/Description";
 
 const NavItem = (props) => {
-  const { link, text, icon, targetInfo, handleOn, onClick, ...others } = props;
+  const { link, href, text, icon, targetInfo, handleOn, onClick, ...others } =
+    props;
   let thisIcon = null;
   if (icon) {
     thisIcon = <Icon style={Styles.icon}>{Icons[icon]}</Icon>;
   }
   let activeStyle;
-  if (targetInfo.active) {
+  if (targetInfo?.active) {
     activeStyle = Styles.activeStyle;
   }
   let style = { ...Styles.link, ...activeStyle };
@@ -21,11 +23,12 @@ const NavItem = (props) => {
       {...others}
       style={Styles.item}
       onClick={(e) => {
-        onClick(e);
-        handleOn(e);
+        callfunc(onClick, [e]);
+        callfunc(handleOn, [e]);
       }}
+      href={link || href}
     >
-      <div href={link} style={style} className="nav-link">
+      <div style={style} className="nav-link">
         {thisIcon}
         {text}
       </div>
@@ -34,15 +37,22 @@ const NavItem = (props) => {
 };
 
 const HeaderNav = (props) => (
-  <List atom="nav" style={props.style} className={props.className}>
+  <List
+    atom="nav"
+    style={{ ...Styles.nav, ...props.style }}
+    className={props.className}
+  >
     {get(props, ["nav", "link"], []).map((item, key) => {
       let targetId;
       if (0 === item.indexOf("#")) {
-        targetId = item.substr(1);
+        targetId = item.substring(1);
       }
       return (
         <SmoothScrollLink
           key={key}
+          onClick={() => {
+            setTimeout(() => history.pushState({}, "", item));
+          }}
           link={item}
           text={props.nav.text[key]}
           icon={props.nav.icon[key] ? props.nav.icon[key] : null}
@@ -55,6 +65,7 @@ const HeaderNav = (props) => (
         />
       );
     })}
+    <NavItem atom="a" key="resume" text="My resume" href="/#/Resume" />
   </List>
 );
 
@@ -84,6 +95,10 @@ const Styles = {
   },
   activeStyle: {
     background: "#9f7676",
+  },
+  nav: {
+    maxHeight: "70vh",
+    overflowY: "auto",
   },
 };
 

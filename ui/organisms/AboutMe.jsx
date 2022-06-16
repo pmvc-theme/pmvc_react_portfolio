@@ -37,7 +37,7 @@ const ListComp = ({ list }) => {
 
 const AboutMe = (props) => {
   const { header, content, list, card } = props;
-  injects = useLazyInject( InjectStyles, injects );
+  injects = useLazyInject(InjectStyles, injects);
   return (
     <div className="about-me" style={Styles.container}>
       <Header>{header}</Header>

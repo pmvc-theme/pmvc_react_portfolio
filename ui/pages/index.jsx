@@ -1,18 +1,12 @@
-import React from "react";
-import Home from "./Home";
+import { lazy } from "react";
 import { ClientRoute } from "reshow-url";
 
 const themes = {
-  home: Home,
+  Home: lazy(() => import("./Home")),
+  Resume: lazy(() => import("./Resume")),
 };
 const Index = (props) => {
-  return (
-    <ClientRoute
-      {...props}
-      themes={themes}
-      defaultThemePath="home"
-    />
-  );
+  return <ClientRoute {...props} themes={themes} defaultThemePath="Home" />;
 };
 
 export default Index;

@@ -21,6 +21,9 @@ const Cover = (props) => {
         return false;
       });
     } else {
+      if (targetInfo.isShown && targetInfo.scrollInfo?.isScrollUp) {
+        history.pushState({}, "", "#");
+      }
       lastGeo.current.start();
       setIsRun(true);
     }
