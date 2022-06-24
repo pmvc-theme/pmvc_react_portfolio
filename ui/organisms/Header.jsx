@@ -1,4 +1,3 @@
-import React, { PureComponent } from "react";
 import { reactStyle, mixClass, SemanticUI } from "react-atomic-molecule";
 import { Return } from "reshow";
 import { PageHeader } from "pmvc_react_landing";
@@ -8,62 +7,60 @@ import { HorizontalToVerticalMenu } from "organism-react-navigation";
 import Brand from "../organisms/Brand";
 import HeaderNav from "../organisms/HeaderNav";
 
-class HeaderScroll extends PureComponent {
-  render() {
-    const {
-      brandUrl,
-      freelancerFirstName,
-      freelancerLastName,
-      nav,
-      targetInfo,
-      id,
-      ...others
-    } = this.props;
-    reactStyle(
-      {
-        color: "#00ffea !important",
-      },
-      "#" + id + " .nav a:hover",
-      "header-link"
-    );
-    reactStyle(
-      {
-        fill: "#00ffea !important",
-      },
-      "#" + id + " .nav a:hover svg",
-      "header-link-svg"
-    );
-    let classes;
-    if (targetInfo.active || targetInfo.atTop) {
-      classes = "scrolling";
-    }
-    return (
-      <HorizontalToVerticalMenu
-        {...others}
-        style={Styles.container}
-        className={classes}
-        brand={
-          <Brand
-            url={brandUrl}
-            name={freelancerFirstName}
-            meta={freelancerLastName}
-            className="pure-u-lg-3-8"
-          />
-        }
-        nav={
-          <HeaderNav
-            style={Styles.headerNav}
-            nav={nav}
-            className="pure-u-lg-5-8"
-            scrollRefId={id}
-          />
-        }
-        component={PageHeader}
-        id={id}
-      />
-    );
+const HeaderScroll = (props) => {
+  const {
+    brandUrl,
+    freelancerFirstName,
+    freelancerLastName,
+    nav,
+    targetInfo,
+    id,
+    ...others
+  } = props;
+  reactStyle(
+    {
+      color: "#00ffea !important",
+    },
+    "#" + id + " .nav a:hover",
+    "header-link"
+  );
+  reactStyle(
+    {
+      fill: "#00ffea !important",
+    },
+    "#" + id + " .nav a:hover svg",
+    "header-link-svg"
+  );
+  let classes;
+  if (targetInfo.active || targetInfo.atTop) {
+    classes = "scrolling";
   }
-}
+  return (
+    <HorizontalToVerticalMenu
+      {...others}
+      style={Styles.container}
+      className={classes}
+      brand={
+        <Brand
+          url={brandUrl}
+          name={freelancerFirstName}
+          meta={freelancerLastName}
+          className="pure-u-lg-3-8"
+        />
+      }
+      nav={
+        <HeaderNav
+          style={Styles.headerNav}
+          nav={nav}
+          className="pure-u-lg-5-8"
+          scrollRefId={id}
+        />
+      }
+      component={PageHeader}
+      id={id}
+    />
+  );
+};
 
 const Header = (props) => (
   <ScrollReceiver

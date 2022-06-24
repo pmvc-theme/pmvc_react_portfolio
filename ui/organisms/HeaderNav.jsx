@@ -44,28 +44,33 @@ const HeaderNav = (props) => (
   >
     {get(props, ["nav", "link"], []).map((item, key) => {
       let targetId;
+      const text = props.nav.text[key];
+      const icon = props.nav.icon[key];
       if (0 === item.indexOf("#")) {
         targetId = item.substring(1);
+        return (
+          <SmoothScrollLink
+            key={text}
+            onClick={() => {
+              setTimeout(() => history.pushState({}, "", item));
+            }}
+            link={item}
+            text={text}
+            icon={icon}
+            handleOn={props.handleOn}
+            /*scroll*/
+            container={<NavItem />}
+            targetId={targetId}
+            scrollRefId={props.scrollRefId}
+            scrollRefLoc="top"
+          />
+        );
+      } else {
+        return (
+          <NavItem atom="a" key={text} icon={icon} text={text} href={item} />
+        );
       }
-      return (
-        <SmoothScrollLink
-          key={key}
-          onClick={() => {
-            setTimeout(() => history.pushState({}, "", item));
-          }}
-          link={item}
-          text={props.nav.text[key]}
-          icon={props.nav.icon[key] ? props.nav.icon[key] : null}
-          handleOn={props.handleOn}
-          /*scroll*/
-          container={<NavItem />}
-          targetId={targetId}
-          scrollRefId={props.scrollRefId}
-          scrollRefLoc="top"
-        />
-      );
     })}
-    <NavItem atom="a" key="resume" text="My resume" href="/#/Resume" />
   </List>
 );
 

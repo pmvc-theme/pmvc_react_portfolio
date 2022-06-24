@@ -20,6 +20,7 @@
     "organism-react-d3-piechart": "*",
     "organism-react-event-timeline": "*",
     "organism-react-geometryangle": "*",
+    "organism-react-html2canvas": "*",
     "organism-react-navigation": "*",
     "organism-react-popup": "*",
     "organism-react-scroll-animate": "*",
@@ -44,6 +45,7 @@
   "main": "./build/cjs/src/index.js",
   "module": "./build/es/src/index.js",
   "scripts": {
+    "update-compile-sh": "yo reshow:compile-sh",
     "webpack": "webpack",
     "start": "ws",
     "format": "prettier-eslint --write 'src/**/*.js' 'ui/**/*.jsx'",
