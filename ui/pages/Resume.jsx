@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { Return, Section as ReshowSection } from "reshow";
 import {
   build,
+  useLazyInject,
   SemanticUI,
   Button,
   Card,
@@ -43,6 +44,32 @@ const ContactInfo = (props) => {
   );
 };
 
+const Triangle = (props) => {
+  return <div style={Styles.triangle} />;
+};
+
+const Util = (props) => {
+  return <div style={Styles.util} />;
+};
+
+const Timebox = ({ children }) => {
+  const times = children.split("-");
+  const Begin = times[0];
+  const DurationPos = times[1].indexOf("(");
+  const End =
+    -1 !== DurationPos ? times[1].substring(0, DurationPos) : times[1];
+  const Duration = -1 !== DurationPos ? times[1].substring(DurationPos) : "";
+
+  return (
+    <div style={Styles.timebox}>
+      <div>{Begin}</div>
+      <Util />
+      <div>{End}</div>
+      <div>{Duration}</div>
+    </div>
+  );
+};
+
 const Experience = ({ items, begin, end }) => {
   const { header, meta, content } = items;
   const thisHeader = header.slice(begin, end);
@@ -51,13 +78,25 @@ const Experience = ({ items, begin, end }) => {
   return (
     <List>
       {thisHeader.map((item, key) => (
-        <CardView
-          item
-          key={thisHeader[key]}
-          header={thisHeader[key]}
-          meta={thisMeta[key]}
-          description={<Unsafe>{marked(thisContent[key])}</Unsafe>}
-        />
+        <Row key={thisHeader[key]} style={Styles.experienceRow}>
+          <Column className="pure-u-1-5" style={Styles.experienceMeta}>
+            <Triangle />
+            <Progress
+              style={{ ...Styles.bar, ...Styles.subBar }}
+              className="tiny blue"
+              percent="100"
+            />
+            <Timebox>{thisHeader[key]}</Timebox>
+          </Column>
+          <Column className="pure-u-4-5">
+            <CardView
+              item
+              key={thisHeader[key]}
+              header={thisMeta[key]}
+              description={<Unsafe>{marked(thisContent[key])}</Unsafe>}
+            />
+          </Column>
+        </Row>
       ))}
     </List>
   );
@@ -65,7 +104,6 @@ const Experience = ({ items, begin, end }) => {
 
 const Skill = ({ cards }) => {
   const { header } = cards;
-  console.log({ header });
   return (
     <List>
       {(header || []).map((item, key) => {
@@ -125,7 +163,7 @@ const Section = ({ name, title, children, auto, ...others }) => {
 const Resume = (props) => {
   const lastPdf = useRef();
   const lastEl = useRef();
-
+  injects = useLazyInject( InjectStyles, injects );
   const handleClick = () => {
     lastPdf.current.download(lastEl.current);
   };
@@ -206,36 +244,79 @@ const Resume = (props) => {
 export default Resume;
 
 const Styles = {
+  bar: {
+    margin: "15px 15px 0",
+  },
+  container: {
+    margin: "0 auto",
+    maxWidth: 900,
+  },
+  contact: {},
   download: {
     position: "absolute",
     top: 10,
     right: 10,
   },
-  pdf: {
-    padding: "20px 5rem 20px",
+  experienceRow: {
+    marginBottom: 50,
   },
-  container: {
-    margin: "0 auto",
-    maxWidth: 900,
+  experienceMeta: {
+    position: "relative",
+    paddingTop: 10,
+    fontSize: "0.7rem",
+    color: "#2185d0",
   },
   name: {
     display: "inline-block",
     fontSize: "4rem",
     letterSpacing: "0.5rem",
   },
+  pdf: {
+    padding: "20px 5rem 20px",
+  },
   subtitle: {
     marginBottom: "5rem",
   },
-  contact: {},
   section: {
     marginBottom: "3rem",
   },
-  bar: {
-    margin: "15px 15px 0",
+  subBar: {
+    margin: "0 15px 10px",
+    height: 1,
+    overflow: "hidden",
   },
   title: {
     fontSize: "2rem",
     color: "#2185d0",
     marginBottom: "1rem",
   },
+  triangle: {
+    width: 0,
+    height: 0,
+    border: "5px solid transparent",
+    borderTop: 0,
+    borderBottom: "7px solid #2185d0",
+    position: "absolute",
+    right: 10,
+    top: 4,
+  },
+  timebox: {
+    textAlign: "center",
+  },
+  util: {
+    width: 1,
+    height: 10,
+    display: "inline-block",
+    background: "#2185d0",
+  },
+};
+
+let injects;
+const InjectStyles = {
+  link: [
+    {
+      color: "hsl(202, 35%, 44%)"
+    }, 
+    'a'
+  ],
 };

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { List, Item, Icon } from "react-atomic-molecule";
+import { useCSS, List, Item, Icon } from "react-atomic-molecule";
 import { SmoothScrollLink } from "organism-react-scroll-nav";
 import get from "get-object-value";
 import callfunc from "call-func";
+import { ReLink } from "reshow";
 
 import IcoDescription from "ricon/Description";
 
@@ -19,60 +20,63 @@ const NavItem = (props) => {
   }
   let style = { ...Styles.link, ...activeStyle };
   return (
-    <Item
+    <ReLink
       {...others}
-      style={Styles.item}
+      className="item ui nav-link"
+      style={style}
       onClick={(e) => {
         callfunc(onClick, [e]);
         callfunc(handleOn, [e]);
       }}
+      scrollBack={false}
       href={link || href}
     >
-      <div style={style} className="nav-link">
         {thisIcon}
         {text}
-      </div>
-    </Item>
+    </ReLink>
   );
 };
 
-const HeaderNav = (props) => (
-  <List
-    atom="nav"
-    style={{ ...Styles.nav, ...props.style }}
-    className={props.className}
-  >
-    {get(props, ["nav", "link"], []).map((item, key) => {
-      let targetId;
-      const text = props.nav.text[key];
-      const icon = props.nav.icon[key];
-      if (0 === item.indexOf("#")) {
-        targetId = item.substring(1);
-        return (
-          <SmoothScrollLink
-            key={text}
-            onClick={() => {
-              setTimeout(() => history.pushState({}, "", item));
-            }}
-            link={item}
-            text={text}
-            icon={icon}
-            handleOn={props.handleOn}
-            /*scroll*/
-            container={<NavItem />}
-            targetId={targetId}
-            scrollRefId={props.scrollRefId}
-            scrollRefLoc="top"
-          />
-        );
-      } else {
-        return (
-          <NavItem atom="a" key={text} icon={icon} text={text} href={item} />
-        );
-      }
-    })}
-  </List>
-);
+const HeaderNav = (props) => {
+  useCSS(["item"], "semantic");
+  return (
+    <List
+      atom="nav"
+      style={{ ...Styles.nav, ...props.style }}
+      className={props.className}
+    >
+      {get(props, ["nav", "link"], []).map((item, key) => {
+        let targetId;
+        const text = props.nav.text[key];
+        const icon = props.nav.icon[key];
+        if (0 === item.indexOf("#")) {
+          targetId = item.substring(1);
+          return (
+            <SmoothScrollLink
+              key={text}
+              onClick={() => {
+                setTimeout(() => history.pushState({}, "", item));
+              }}
+              link={item}
+              text={text}
+              icon={icon}
+              handleOn={props.handleOn}
+              /*scroll*/
+              container={<NavItem />}
+              targetId={targetId}
+              scrollRefId={props.scrollRefId}
+              scrollRefLoc="top"
+            />
+          );
+        } else {
+          return (
+            <NavItem atom="a" key={text} icon={icon} text={text} href={item} />
+          );
+        }
+      })}
+    </List>
+  );
+};
 
 export default HeaderNav;
 
@@ -84,10 +88,6 @@ const Styles = {
     textTransform: "uppercase",
     fontSize: "0.875rem",
     display: "block",
-  },
-  item: {
-    listStyle: "none",
-    padding: 0,
   },
   icon: {
     width: 13,

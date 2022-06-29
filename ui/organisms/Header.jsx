@@ -32,6 +32,7 @@ const HeaderScroll = (props) => {
     "header-link-svg"
   );
   let classes;
+
   if (targetInfo.active || targetInfo.atTop) {
     classes = "scrolling";
   }
