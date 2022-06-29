@@ -1,4 +1,4 @@
-import React from "react";
+import {lazy} from "react";
 import { SemanticUI } from "react-atomic-molecule";
 import { pageStore, Section } from "reshow";
 import { ScrollSpy } from "organism-react-scroll-nav";
@@ -11,7 +11,6 @@ import Cover from "../organisms/Cover";
 import Portfolio from "../organisms/Portfolio";
 import AboutMe from "../organisms/AboutMe";
 import SkillSet from "../organisms/SkillSet";
-import Experience from "../organisms/Experience";
 import MyTime from "../organisms/MyTime";
 import Detail from "../organisms/Detail";
 import Contact from "../organisms/Contact";
@@ -44,17 +43,17 @@ const Body = (props) => {
           <SkillSet />
         </WhiteBlock>
       </ScrollSpy>
+      <ScrollSpy id="mytime">
+        <MyTime />
+      </ScrollSpy>
       <ScrollAnimate
         scrollMargin={-100}
         id="experience"
         monitorScroll={true}
         style={{ background: "#3C5B65" }}
       >
-        {() => <Experience />}
+        {() => lazy(()=>import("../organisms/Experience"))}
       </ScrollAnimate>
-      <ScrollSpy id="mytime">
-        <MyTime />
-      </ScrollSpy>
       <ScrollSpy id="detail">
         <Detail />
       </ScrollSpy>
