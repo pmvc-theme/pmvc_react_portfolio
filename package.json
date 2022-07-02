@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.4.2",
   "name": "pmvc_react_portfolio",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "import": "./build/es/src/index.mjs"
   },
   "main": "./build/cjs/src/index.js",
-  "module": "./build/es/src/index.js",
+  "module": "./build/es/src/index.mjs",
   "scripts": {
     "update-compile-sh": "yo reshow:compile-sh",
     "webpack": "webpack",

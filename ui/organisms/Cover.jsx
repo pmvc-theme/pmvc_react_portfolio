@@ -8,8 +8,7 @@ import { Return } from "reshow";
 import Me from "../organisms/Me";
 import Introduce from "../organisms/Introduce";
 
-const Cover = (props) => {
-  const { targetInfo, me, introduce } = props;
+const Cover = ({ targetInfo }) => {
   const lastGeo = useRef();
   const [isRun, setIsRun] = useState();
   useEffect(() => {
@@ -21,7 +20,7 @@ const Cover = (props) => {
         return false;
       });
     } else {
-      if (targetInfo.isShown && targetInfo.scrollInfo?.isScrollUp) {
+      if (targetInfo.scrollInfo?.isScrollUp) {
         history.pushState({}, "", "#");
       }
       lastGeo.current.start();
@@ -30,9 +29,9 @@ const Cover = (props) => {
   }, [targetInfo]);
   return (
     <SplashBlock style={Styles.container}>
-      <Me style={Styles.hero} me={me} />
+      <Me style={Styles.hero} />
       <Geometryangle ref={lastGeo} />
-      <Introduce isRun={isRun} {...introduce} />
+      <Introduce isRun={isRun} />
     </SplashBlock>
   );
 };
@@ -42,11 +41,7 @@ const ScrollCover = (props) => (
     {...props}
     targetId="design"
     scrollMargin={0}
-    container={
-      <Return initStates={["me", "introduce"]}>
-        <Cover />
-      </Return>
-    }
+    container={ Cover }
   />
 );
 

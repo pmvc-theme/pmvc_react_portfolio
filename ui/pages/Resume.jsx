@@ -3,16 +3,17 @@ import { ReLink, Return, Section as ReshowSection } from "reshow";
 import {
   build,
   useLazyInject,
-  SemanticUI,
-  Menu,
   Button,
   Card,
-  List,
+  Column,
+  Content,
   Item,
   Icon,
-  Row,
-  Column,
+  List,
+  Menu,
   Progress,
+  Row,
+  SemanticUI,
   Unsafe,
 } from "react-atomic-molecule";
 import { CardView } from "react-atomic-organism";
@@ -22,6 +23,7 @@ import { marked } from "marked";
 import { KEYS } from "reshow-constant";
 import Home from "ricon/Home";
 import { Dropdown } from "organism-react-navigation";
+import Me from "../organisms/Me";
 
 const Name = ({ firstName, lastName }) => {
   return (
@@ -38,23 +40,25 @@ const Subtitle = ({ children }) => (
   </SemanticUI>
 );
 
-const ContactInfo = (props) => {
-  return (
-    <List style={Styles.contact}>
-      <Item>GIT: https://github.com/HillLiu</Item>
-      <Item>Email: hill@kimo.com</Item>
-      <Item>Portfolio: https://hillliu.github.io/</Item>
-    </List>
-  );
-};
+const ContactInfo = ({ keyArr, data }) => (
+  <>
+    {keyArr?.map((key, index) => (
+      <Row key={key} style={Styles.oneLineRow}>
+        <Column
+          className="pure-u-1-5 one-line-title"
+          style={Styles.oneLineColTitle}
+        >
+          {key}
+        </Column>
+        <Column className="pure-u-4-5">{data[index]}</Column>
+      </Row>
+    ))}
+  </>
+);
 
-const Triangle = (props) => {
-  return <div style={Styles.triangle} />;
-};
+const Triangle = (props) => <div style={Styles.triangle} />;
 
-const Util = (props) => {
-  return <div style={Styles.util} />;
-};
+const Until = (props) => <div style={Styles.until} />;
 
 const Timebox = ({ children }) => {
   const times = children.split("-");
@@ -67,7 +71,7 @@ const Timebox = ({ children }) => {
   return (
     <div style={Styles.timebox}>
       <div>{Begin}</div>
-      <Util />
+      <Until />
       <div>{End}</div>
       <div>{Duration}</div>
     </div>
@@ -80,7 +84,7 @@ const Experience = ({ items, begin, end }) => {
   const thisMeta = meta.slice(begin, end);
   const thisContent = content.slice(begin, end);
   return (
-    <List>
+    <>
       {thisHeader.map((item, key) => (
         <Row key={thisHeader[key]} style={Styles.experienceRow}>
           <Column className="pure-u-1-5" style={Styles.experienceMeta}>
@@ -102,16 +106,34 @@ const Experience = ({ items, begin, end }) => {
           </Column>
         </Row>
       ))}
-    </List>
+    </>
   );
 };
 
 const Skill = ({ cards }) => {
   const { header } = cards;
   return (
-    <List>
-      {(header || []).map((item, key) => {
-        return <Card key={key}>{header[key]}</Card>;
+    <List type="cards" className="four">
+      {header?.map((item, key) => {
+        return (
+          <Card key={key}>
+            <Content>{header[key]}</Content>
+          </Card>
+        );
+      })}
+    </List>
+  );
+};
+
+const Interests = ({ data }) => {
+  return (
+    <List type="cards" className="four">
+      {data?.map((item) => {
+        return (
+          <Card key={item}>
+            <Content>{item}</Content>
+          </Card>
+        );
       })}
     </List>
   );
@@ -216,7 +238,7 @@ const Resume = (props) => {
           ),
           subTitle: <Subtitle>{introduce}</Subtitle>,
           contactInfo: (
-            <Section title="Personal Information" auto>
+            <Section name="contact" title="Personal Information">
               <ContactInfo />
             </Section>
           ),
@@ -231,8 +253,13 @@ const Resume = (props) => {
             </Section>
           ),
           skills: (
-            <Section name="skillset" title="Skills">
+            <Section name="skillset" title="Skills" auto>
               <Skill />
+            </Section>
+          ),
+          interests: (
+            <Section name="interests" title="Interests" auto>
+              <Interests />
             </Section>
           ),
         };
@@ -240,8 +267,13 @@ const Resume = (props) => {
         return (
           <>
             <ResumeMenu onDownload={handleClick} />
-            <HTMLToPDF ref={lastPdf} hideHtml />
-            <SemanticUI refCb={lastEl} style={Styles.container}>
+            <HTMLToPDF
+              ref={lastPdf}
+              hideHtml
+              downloadFileName={`${freelancerFirstName}-resume.pdf`}
+            />
+            <SemanticUI className="pdf-root" refCb={lastEl} style={Styles.container}>
+              <Me style={Styles.me} /> 
               {KEYS(pdf).map((key) => {
                 const pdfData = pdf[key];
                 return (
@@ -273,6 +305,7 @@ const Styles = {
   container: {
     margin: "0 auto",
     maxWidth: 900,
+    position: "relative",
   },
   contact: {},
   buttons: {
@@ -289,10 +322,24 @@ const Styles = {
     fontSize: "0.7rem",
     color: "#2185d0",
   },
+  me: {
+    position: "absolute",
+    top: 10,
+    right: 20,
+  },
   name: {
     display: "inline-block",
     fontSize: "4rem",
     letterSpacing: "0.5rem",
+  },
+  oneLineRow: {
+    marginBottom: 20,
+  },
+  oneLineColTitle: {
+    textAlign: "right",
+    paddingRight: 10,
+    boxSizing: "border-box",
+    content: ":",
   },
   pdf: {
     padding: "20px 5rem 20px",
@@ -326,7 +373,7 @@ const Styles = {
   timebox: {
     textAlign: "center",
   },
-  util: {
+  until: {
     width: 1,
     height: 10,
     display: "inline-block",
@@ -341,5 +388,11 @@ const InjectStyles = {
       color: "hsl(202, 35%, 44%)",
     },
     "a",
+  ],
+  oneLineTitle: [
+    {
+      content: ":",
+    },
+    ".one-line-title:after",
   ],
 };

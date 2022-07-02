@@ -109,5 +109,5 @@ const Styles = {
 };
 
 const Icons = {
-  description: <IcoDescription style={Styles.svg} />,
+  doc: <IcoDescription style={Styles.svg} />,
 };

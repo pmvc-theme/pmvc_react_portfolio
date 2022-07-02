@@ -1,16 +1,17 @@
-import React from "react";
+import { build } from "react-atomic-molecule";
 import { Image } from "organism-react-animate";
+import { Return } from "reshow";
 
-const Me = ({ me, ...props }) => {
-  if (React.isValidElement(me)) {
-    return React.cloneElement(me, props);
-  } else {
-    if (me) {
-      return <Image {...props} src={me} className="centered circular" />;
-    } else {
-      return null;
-    }
-  }
+const Me = (props) => {
+  return (
+    <Return initStates={["me"]}>
+      {({me}) => {
+        return me ? (
+          <Image {...props} src={me} className="centered bordered" ui />
+        ) : null;
+      }}
+    </Return>
+  );
 };
 
 export default Me;

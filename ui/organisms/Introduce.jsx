@@ -1,43 +1,42 @@
-import React, { Component } from "react";
+import { useEffect, useRef } from "react";
 import Typing from "organism-react-typing";
 import get from "get-object-value";
 import { SemanticUI } from "react-atomic-molecule";
+import { Return } from "reshow";
 
-class Introduce extends Component {
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.isRun) {
-      this.type?.start();
+const Introduce = ({ isRun }) => {
+  const typeEl = useRef();
+  useEffect(() => {
+    if (isRun) {
+      typeEl.current?.start();
     } else {
-      this.type?.stop();
+      typeEl.current?.stop();
     }
-  }
+  }, [isRun]);
 
-  render() {
-    const { bd, ...props } = this.props;
-    return (
-      <SemanticUI style={Styles.container} className="introduce">
-        <div className="hd" style={Styles.hd}>
-          {props.hd}
-        </div>
-        <div className="bd" style={Styles.bd}>
-          {get(bd, ["fixed"])}
-          <Typing
-            sec={get(bd, ["aniSec"], 3)}
-            color="#fff"
-            ref={(el) => (this.type = el)}
-          >
-            {get(bd, ["animation"], []).map((item, key) => (
-              <div key={key}>{item}</div>
-            ))}
-          </Typing>
-        </div>
-        <div className="ft" style={Styles.ft}>
-          {props.ft}
-        </div>
-      </SemanticUI>
-    );
-  }
-}
+  return (
+    <Return initStates={["introduce"]}>
+      {({ introduce: { hd, bd, ft } = {} }) => (
+        <SemanticUI style={Styles.container} className="introduce">
+          <div className="hd" style={Styles.hd}>
+            {hd}
+          </div>
+          <div className="bd" style={Styles.bd}>
+            {get(bd, ["fixed"])}
+            <Typing sec={get(bd, ["aniSec"], 3)} color="#fff" ref={typeEl}>
+              {get(bd, ["animation"], []).map((item, key) => (
+                <div key={key}>{item}</div>
+              ))}
+            </Typing>
+          </div>
+          <div className="ft" style={Styles.ft}>
+            {ft}
+          </div>
+        </SemanticUI>
+      )}
+    </Return>
+  );
+};
 
 export default Introduce;
 
