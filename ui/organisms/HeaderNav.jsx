@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { useCSS, List, Item, Icon } from "react-atomic-molecule";
+import { List, Item, Icon } from "react-atomic-molecule";
 import { SmoothScrollLink } from "organism-react-scroll-nav";
 import get from "get-object-value";
 import callfunc from "call-func";
@@ -21,8 +21,10 @@ const NavItem = (props) => {
   let style = { ...Styles.link, ...activeStyle };
   return (
     <ReLink
+      component={Item}
+      atom="a"
       {...others}
-      className="item ui nav-link"
+      className="nav-link"
       style={style}
       onClick={(e) => {
         callfunc(onClick, [e]);
@@ -38,7 +40,6 @@ const NavItem = (props) => {
 };
 
 const HeaderNav = (props) => {
-  useCSS(["item"], "semantic");
   return (
     <List
       atom="nav"

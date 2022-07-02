@@ -1,13 +1,15 @@
 import { useRef } from "react";
-import { Return, Section as ReshowSection } from "reshow";
+import { ReLink, Return, Section as ReshowSection } from "reshow";
 import {
   build,
   useLazyInject,
   SemanticUI,
+  Menu,
   Button,
   Card,
   List,
   Item,
+  Icon,
   Row,
   Column,
   Progress,
@@ -18,6 +20,8 @@ import { HTMLToPDF, PDFPage } from "organism-react-html2canvas";
 import get from "get-object-value";
 import { marked } from "marked";
 import { KEYS } from "reshow-constant";
+import Home from "ricon/Home";
+import { Dropdown } from "organism-react-navigation";
 
 const Name = ({ firstName, lastName }) => {
   return (
@@ -149,6 +153,27 @@ const SectionBody = ({ children, auto, name, ...others }) => {
   }
 };
 
+const ResumeMenu = ({ onDownload }) => {
+  const DropList = (props) => (
+    <Menu {...props}>
+      <Item onClick={onDownload}>Download Resume</Item>
+    </Menu>
+  );
+
+  return (
+    <Menu type="buttons" style={Styles.buttons} className="text">
+      <ReLink href="/" component={Item} atom="a">
+        <Icon>
+          <Home />
+        </Icon>
+      </ReLink>
+      <Dropdown list={DropList} right item>
+        Download
+      </Dropdown>
+    </Menu>
+  );
+};
+
 const Section = ({ name, title, children, auto, ...others }) => {
   return (
     <SemanticUI style={Styles.section}>
@@ -163,7 +188,7 @@ const Section = ({ name, title, children, auto, ...others }) => {
 const Resume = (props) => {
   const lastPdf = useRef();
   const lastEl = useRef();
-  injects = useLazyInject( InjectStyles, injects );
+  injects = useLazyInject(InjectStyles, injects);
   const handleClick = () => {
     lastPdf.current.download(lastEl.current);
   };
@@ -214,9 +239,7 @@ const Resume = (props) => {
 
         return (
           <>
-            <Button onClick={handleClick} style={Styles.download}>
-              Download Resume
-            </Button>
+            <ResumeMenu onDownload={handleClick} />
             <HTMLToPDF ref={lastPdf} hideHtml />
             <SemanticUI refCb={lastEl} style={Styles.container}>
               {KEYS(pdf).map((key) => {
@@ -252,8 +275,8 @@ const Styles = {
     maxWidth: 900,
   },
   contact: {},
-  download: {
-    position: "absolute",
+  buttons: {
+    position: "fixed",
     top: 10,
     right: 10,
   },
@@ -315,8 +338,8 @@ let injects;
 const InjectStyles = {
   link: [
     {
-      color: "hsl(202, 35%, 44%)"
-    }, 
-    'a'
+      color: "hsl(202, 35%, 44%)",
+    },
+    "a",
   ],
 };
