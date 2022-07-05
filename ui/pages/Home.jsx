@@ -1,6 +1,5 @@
-import {lazy} from "react";
+import { lazy } from "react";
 import { SemanticUI } from "react-atomic-molecule";
-import { pageStore, Section } from "reshow";
 import { ScrollSpy } from "organism-react-scroll-nav";
 import ScrollAnimate from "organism-react-scroll-animate";
 
@@ -17,10 +16,8 @@ import Contact from "../organisms/Contact";
 import PortfolioLayout from "../templates/PortfolioLayout";
 
 const Body = (props) => {
-  const I18N = pageStore.getMap("I18N");
-  const section = pageStore.getMap("section");
   return (
-    <SemanticUI>
+    <>
       <ScrollSpy id="design">
         <SvgBlackBlock name="design">
           <HeaderContent />
@@ -52,15 +49,15 @@ const Body = (props) => {
         monitorScroll={true}
         style={{ background: "#3C5B65" }}
       >
-        {() => lazy(()=>import("../organisms/Experience"))}
+        {() => lazy(() => import("../organisms/Experience"))}
       </ScrollAnimate>
       <ScrollSpy id="detail">
         <Detail />
       </ScrollSpy>
       <ScrollSpy id="contact">
-        <Contact {...section.contact} />
+        <Contact />
       </ScrollSpy>
-    </SemanticUI>
+    </>
   );
 };
 

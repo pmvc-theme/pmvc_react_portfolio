@@ -74,7 +74,7 @@ const Contact = (props) => {
   injects = useLazyInject(InjectStyles, injects);
   const { tel, form } = props;
   return (
-    <Section className="contact" style={Styles.container}>
+    <Section name="contact" style={Styles.container}>
       <div className="pure-g" style={Styles.inside}>
         <Tel className="pure-u-1 pure-u-md-1-3" {...tel} />
         <ContactForm className="pure-u-1 pure-u-md-2-3" {...form} />
