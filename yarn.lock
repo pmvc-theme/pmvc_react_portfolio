@@ -3424,9 +3424,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.172:
-  version "1.4.178"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.178.tgz#3dae6fda486007bb54bbfed420ebd40881a3de45"
-  integrity sha512-aWuhJXkwIdoQzGR8p2QvR3N0OzdUKZSP8+P/hzuMzNQIPZoEa8HiCGM75bQBHjyz+eKT5PB9dVCzkK/tyQ4B5Q==
+  version "1.4.179"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.179.tgz#450561ade3ca3497dfed65af412c672972b2dad5"
+  integrity sha512-1XeTb/U/8Xgh2YgPOqhakLYsvCcU4U7jUjTMbEnhIJoIWd/Qt3yC8y0cbG+fHzn4zUNF99Ey1xiPf20bwgLO3Q==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -6174,9 +6174,9 @@ organism-react-graph@*:
     win-doc "*"
 
 organism-react-html2canvas@*:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/organism-react-html2canvas/-/organism-react-html2canvas-0.1.2.tgz#27e4430b093a0be22064453235ec7335bb7b827a"
-  integrity sha512-BPZVcNTZ2ILkfSOoa89s/J73RZYH4Pz0P3fFJBjQ5FjDAqbUL/YsyIcrm5wXz0JyCUbtKB8WC5EJqOvay496IQ==
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/organism-react-html2canvas/-/organism-react-html2canvas-0.1.3.tgz#f82275f3e2d60704bb9142c102058a22bc5c9d4f"
+  integrity sha512-YWJU2m+AbEBLj6eM37JDqF0tomUcDros3WkhqotSqJS/wh/CdAxnfU1WarNo3hUIjyq00lctrWK9XUhrlbeBjQ==
   dependencies:
     organism-react-iframe "*"
     ratio-js "*"
@@ -6733,9 +6733,9 @@ react-atomic-atom@*:
     reshow-runtime "*"
 
 react-atomic-molecule@*:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/react-atomic-molecule/-/react-atomic-molecule-4.3.5.tgz#db3eee7550fe6a87e8dcedfd256ec56205269600"
-  integrity sha512-ub1j2F0/59UUV+642uSwk9uvrPaTC8GIysz+aMjISgttL3gKu4UN0UqH4fsPzhf74E+tqmnqFSM0jhK73ERzmQ==
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/react-atomic-molecule/-/react-atomic-molecule-4.3.6.tgz#131600e6620209da9cbd6ccb76a4c3fe4e58cc4f"
+  integrity sha512-1tv5NJM0+sP8RrveVTAWHNPqw4uV/2c/CNad9SIOKZzZSzIN36tzAad/Sd+w4jjlE92fo41vMQMPX6evU+64ew==
   dependencies:
     array.merge "*"
     call-func "*"

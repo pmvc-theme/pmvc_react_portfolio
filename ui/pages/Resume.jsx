@@ -43,14 +43,13 @@ const Subtitle = ({ children }) => (
 const ContactInfo = ({ keyArr, data }) => (
   <>
     {keyArr?.map((key, index) => (
-      <Row key={key} style={Styles.oneLineRow}>
-        <Column
-          className="pure-u-1-5 one-line-title"
-          style={Styles.oneLineColTitle}
-        >
+      <Row key={key} style={Styles.oneLineRow} className="one-line">
+        <Column className="pure-u-1-5 title" style={Styles.oneLineColTitle}>
           {key}
         </Column>
-        <Column className="pure-u-4-5">{data[index]}</Column>
+        <Column className="pure-u-4-5 content">
+          <Unsafe>{marked(data[index])}</Unsafe>
+        </Column>
       </Row>
     ))}
   </>
@@ -230,17 +229,18 @@ const Resume = (props) => {
         }
 
         const components = {
-          name: (
-            <Name
-              firstName={freelancerFirstName}
-              lastName={freelancerLastName}
-            />
-          ),
-          subTitle: <Subtitle>{introduce}</Subtitle>,
           contactInfo: (
-            <Section name="contact" title="Personal Information">
-              <ContactInfo />
-            </Section>
+            <>
+              <Name
+                firstName={freelancerFirstName}
+                lastName={freelancerLastName}
+              />
+              <Subtitle>{introduce}</Subtitle>
+              <Section name="info" title="Personal Information">
+                <ContactInfo />
+              </Section>
+              <Me style={Styles.me}/>
+            </>
           ),
           experienceWithTitle: (
             <Section name="detail" title="Work Experience">
@@ -266,14 +266,17 @@ const Resume = (props) => {
 
         return (
           <>
-            <ResumeMenu onDownload={handleClick} />
             <HTMLToPDF
               ref={lastPdf}
               hideHtml
               downloadFileName={`${freelancerFirstName}-resume.pdf`}
             />
-            <SemanticUI className="pdf-root" refCb={lastEl} style={Styles.container}>
-              <Me style={Styles.me} /> 
+            <SemanticUI
+              className="pdf-root"
+              refCb={lastEl}
+              style={Styles.container}
+            >
+              <ResumeMenu onDownload={handleClick} />
               {KEYS(pdf).map((key) => {
                 const pdfData = pdf[key];
                 return (
@@ -302,16 +305,18 @@ const Styles = {
   bar: {
     margin: "15px 15px 0",
   },
+  buttons: {
+    position: "fixed",
+    top: 10,
+    left: "50%",
+    transform: "translateX(-50%)",
+    zIndex: 1,
+    backgroundColor: "hsl(0, 100%, 100%)"
+  },
   container: {
     margin: "0 auto",
     maxWidth: 900,
     position: "relative",
-  },
-  contact: {},
-  buttons: {
-    position: "fixed",
-    top: 10,
-    right: 10,
   },
   experienceRow: {
     marginBottom: 50,
@@ -393,6 +398,12 @@ const InjectStyles = {
     {
       content: ":",
     },
-    ".one-line-title:after",
+    ".one-line .title:after",
+  ],
+  oneLineContent: [
+    {
+      margin: 0,
+    },
+    ".one-line .content p",
   ],
 };
