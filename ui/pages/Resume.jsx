@@ -78,10 +78,11 @@ const Timebox = ({ children }) => {
 };
 
 const Experience = ({ items, begin, end }) => {
-  const { header, meta, content } = items;
+  const { header, meta, content, role } = items;
   const thisHeader = header.slice(begin, end);
   const thisMeta = meta.slice(begin, end);
   const thisContent = content.slice(begin, end);
+  const thisRole = role.slice(begin, end);
   return (
     <>
       {thisHeader.map((item, key) => (
@@ -95,11 +96,12 @@ const Experience = ({ items, begin, end }) => {
             />
             <Timebox>{thisHeader[key]}</Timebox>
           </Column>
-          <Column className="pure-u-4-5">
+          <Column className="pure-u-4-5 ui items" style={{ margin: 0 }}>
             <CardView
               item
               key={thisHeader[key]}
               header={thisMeta[key]}
+              meta={thisRole[key] ? `Role: ${thisRole[key]}` : null}
               description={<Unsafe>{marked(thisContent[key])}</Unsafe>}
             />
           </Column>
@@ -239,7 +241,7 @@ const Resume = (props) => {
               <Section name="info" title="Personal Information">
                 <ContactInfo />
               </Section>
-              <Me style={Styles.me}/>
+              <Me style={Styles.me} />
             </>
           ),
           experienceWithTitle: (
@@ -311,7 +313,7 @@ const Styles = {
     left: "50%",
     transform: "translateX(-50%)",
     zIndex: 1,
-    backgroundColor: "hsl(0, 100%, 100%)"
+    backgroundColor: "hsl(0, 100%, 100%)",
   },
   container: {
     margin: "0 auto",
@@ -336,6 +338,7 @@ const Styles = {
     display: "inline-block",
     fontSize: "4rem",
     letterSpacing: "0.5rem",
+    marginTop: "5rem",
   },
   oneLineRow: {
     marginBottom: 20,
