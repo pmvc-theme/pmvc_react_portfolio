@@ -1,18 +1,15 @@
 import React from "react";
 import WhiteBlock from "../molecules/WhiteBlock";
 
-const SvgBlackBlock = (props) => {
-  const { style, ...reset } = props;
-  return (
-    <WhiteBlock
-      {...reset}
-      style={{
-        ...Styles.container,
-        ...style,
-      }}
-    />
-  );
-};
+const SvgBlackBlock = ({ style, ...restProps }) => (
+  <WhiteBlock
+    {...restProps}
+    style={{
+      ...Styles.container,
+      ...style,
+    }}
+  />
+);
 
 export default SvgBlackBlock;
 
