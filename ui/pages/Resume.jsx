@@ -2,6 +2,8 @@ import { useRef } from "react";
 import smoothScrollTo from "smooth-scroll-to";
 import { ReLink, Return, Section as ReshowSection } from "reshow";
 import {
+  min,
+  pageWidth,
   build,
   useLazyInject,
   Button,
@@ -46,10 +48,10 @@ const ContactInfo = ({ keyArr, data }) => (
   <>
     {keyArr?.map((key, index) => (
       <Row key={key} style={Styles.oneLineRow} className="one-line">
-        <Column className="pure-u-1-5 title" style={Styles.oneLineColTitle}>
+        <Column className="pure-u-md-1-5 title" style={Styles.oneLineColTitle}>
           {key}
         </Column>
-        <Column className="pure-u-4-5 content">
+        <Column className="pure-u-md-4-5 content">
           <Unsafe>{marked(data[index])}</Unsafe>
         </Column>
       </Row>
@@ -89,7 +91,7 @@ const Experience = ({ items, begin, end }) => {
     <>
       {thisHeader.map((item, key) => (
         <Row key={thisHeader[key]} style={Styles.experienceRow}>
-          <Column className="pure-u-1-5" style={Styles.experienceMeta}>
+          <Column className="pure-u-md-1-5" style={Styles.experienceMeta}>
             <Triangle />
             <Progress
               style={{ ...Styles.bar, ...Styles.subBar }}
@@ -98,7 +100,7 @@ const Experience = ({ items, begin, end }) => {
             />
             <Timebox>{thisHeader[key]}</Timebox>
           </Column>
-          <Column className="pure-u-4-5 ui items" style={{ margin: 0 }}>
+          <Column className="pure-u-md-4-5 ui items" style={{ margin: 0 }}>
             <CardView
               item
               key={thisHeader[key]}
@@ -116,7 +118,7 @@ const Experience = ({ items, begin, end }) => {
 const Skill = ({ cards }) => {
   const { header } = cards;
   return (
-    <List type="cards" className="four">
+    <List type="cards" className="four doubling">
       {header?.map((item, key) => {
         return (
           <Card key={key}>
@@ -130,7 +132,7 @@ const Skill = ({ cards }) => {
 
 const Interests = ({ data }) => {
   return (
-    <List type="cards" className="four">
+    <List type="cards" className="four doubling">
       {data?.map((item) => {
         return (
           <Card key={item}>
@@ -145,10 +147,10 @@ const Interests = ({ data }) => {
 const SectionHeader = ({ title }) => {
   return (
     <Row>
-      <Column className="pure-u-1-5">
+      <Column className="pure-u-md-1-5">
         <Progress style={Styles.bar} className="tiny blue" percent="100" />
       </Column>
-      <Column style={Styles.title} className="pure-u-4-5">
+      <Column style={Styles.title} className="pure-u-md-4-5">
         {title}
       </Column>
     </Row>
@@ -169,8 +171,8 @@ const SectionBody = ({ children, auto, name, ...others }) => {
   if (auto) {
     return (
       <Row>
-        <Column className="pure-u-1-5"></Column>
-        <Column className="pure-u-4-5">{thisChildren}</Column>
+        <Column className="pure-u-md-1-5"></Column>
+        <Column className="pure-u-md-4-5">{thisChildren}</Column>
       </Row>
     );
   } else {
@@ -242,15 +244,21 @@ const Resume = (props) => {
         const components = {
           contactInfo: (
             <>
-              <Name
-                firstName={freelancerFirstName}
-                lastName={freelancerLastName}
-              />
-              <Subtitle>{introduce}</Subtitle>
+              <Row>
+                <Column className="pure-u-md-3-5">
+                  <Name
+                    firstName={freelancerFirstName}
+                    lastName={freelancerLastName}
+                  />
+                  <Subtitle>{introduce}</Subtitle>
+                </Column>
+                <Column className="pure-u-md-2-5">
+                  <Me />
+                </Column>
+              </Row>
               <Section name="info" title="Personal Information">
                 <ContactInfo />
               </Section>
-              <Me style={Styles.me} />
             </>
           ),
           experienceWithTitle: (
@@ -291,7 +299,7 @@ const Resume = (props) => {
               {KEYS(pdf).map((key) => {
                 const pdfData = pdf[key];
                 return (
-                  <PDFPage style={Styles.pdf} key={key}>
+                  <PDFPage key={key}>
                     {pdfData.map((p, key1) => {
                       const pData = 0 === p.indexOf("[") ? JSON.parse(p) : [p];
                       return build(components[pData[0]])({
@@ -314,7 +322,7 @@ export default Resume;
 
 const Styles = {
   bar: {
-    margin: "15px 15px 0",
+    margin: "15px 5px 0 0",
   },
   buttons: {
     position: "fixed",
@@ -326,7 +334,8 @@ const Styles = {
   },
   container: {
     margin: "0 auto",
-    maxWidth: 900,
+    maxWidth: pageWidth.lg,
+    minWidth: 320,
     position: "relative",
   },
   experienceRow: {
@@ -338,11 +347,6 @@ const Styles = {
     fontSize: "0.7rem",
     color: "#2185d0",
   },
-  me: {
-    position: "absolute",
-    top: 10,
-    right: 20,
-  },
   name: {
     display: "inline-block",
     fontSize: "4rem",
@@ -353,19 +357,15 @@ const Styles = {
     marginBottom: 20,
   },
   oneLineColTitle: {
-    textAlign: "right",
     paddingRight: 10,
     boxSizing: "border-box",
-    content: ":",
-  },
-  pdf: {
-    padding: "20px 5rem 20px",
   },
   subtitle: {
     marginBottom: "5rem",
   },
   section: {
     marginBottom: "3rem",
+    padding: "0 1em",
   },
   subBar: {
     margin: "0 15px 10px",
@@ -408,6 +408,12 @@ const InjectStyles = {
   ],
   oneLineTitle: [
     {
+      textAlign: "right",
+    },
+    [min.md, ".one-line .title"],
+  ],
+  oneLineTitleAfter: [
+    {
       content: ":",
     },
     ".one-line .title:after",
@@ -418,4 +424,5 @@ const InjectStyles = {
     },
     ".one-line .content p",
   ],
+  pdfPage: [{ padding: "20px 5rem 20px" }, [min.md, "[data-pdf-page]"]],
 };

@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 import Typing from "organism-react-typing";
 import get from "get-object-value";
-import { SemanticUI } from "react-atomic-molecule";
+import { min, useLazyInject, SemanticUI } from "react-atomic-molecule";
 import { Return } from "reshow";
 
 const Introduce = ({ isRun }) => {
+  injects = useLazyInject(InjectStyles, injects);
   const typeEl = useRef();
   useEffect(() => {
     if (isRun) {
@@ -58,10 +59,20 @@ const Styles = {
     whiteSpace: "nowrap",
   },
   bd: {
-    font: "50px/1.5 Montserrat,sans-serif",
+    font: "25px/1.5 Montserrat,sans-serif",
     fontWeight: "700",
   },
   ft: {
     width: 300,
   },
+};
+
+let injects;
+const InjectStyles = {
+  bdFontSize: [
+    {
+      fontSize: "50px !important",
+    },
+    [min.md, ".introduce .bd"],
+  ],
 };
