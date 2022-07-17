@@ -41,7 +41,7 @@ const ScrollCover = (props) => (
     {...props}
     targetId="design"
     scrollMargin={0}
-    container={ Cover }
+    container={Cover}
   />
 );
 

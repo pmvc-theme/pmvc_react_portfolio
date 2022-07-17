@@ -7,7 +7,7 @@ describe("EventTimeline Test", () => {
   it("basic test", async () => {
     const wrap = render(<IndexPage />);
     await waitFor(() => {
-      act(()=>expect(wrap.html()).to.have.string("div"));
+      act(() => expect(wrap.html()).to.have.string("div"));
     });
   });
 });

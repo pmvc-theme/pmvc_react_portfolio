@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import smoothScrollTo from "smooth-scroll-to";
 import { ReLink, Return, Section as ReshowSection } from "reshow";
 import {
   build,
@@ -22,6 +23,7 @@ import get from "get-object-value";
 import { marked } from "marked";
 import { KEYS } from "reshow-constant";
 import Home from "ricon/Home";
+import GoToTop from "ricon/GoToTop";
 import { Dropdown } from "organism-react-navigation";
 import Me from "../organisms/Me";
 
@@ -190,6 +192,13 @@ const ResumeMenu = ({ onDownload }) => {
           <Home />
         </Icon>
       </ReLink>
+      <Icon
+        className="item"
+        style={{ cursor: "pointer" }}
+        onClick={() => smoothScrollTo(0)}
+      >
+        <GoToTop />
+      </Icon>
       <Dropdown list={DropList} right item>
         Download
       </Dropdown>

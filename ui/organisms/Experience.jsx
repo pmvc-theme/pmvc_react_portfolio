@@ -47,7 +47,11 @@ const ExperienceBody = ({ header, content, events, link }) => {
 };
 
 const Experience = () => (
-  <WhiteBlock name="experience" style={Styles.container} backgroundStyle={Styles.containerBackground}>
+  <WhiteBlock
+    name="experience"
+    style={Styles.container}
+    backgroundStyle={Styles.containerBackground}
+  >
     <ExperienceBody />
   </WhiteBlock>
 );
