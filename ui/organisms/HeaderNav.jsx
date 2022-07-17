@@ -19,6 +19,7 @@ const NavItem = (props) => {
     activeStyle = Styles.activeStyle;
   }
   let style = { ...Styles.link, ...activeStyle };
+  const thisHref = link || href;
   return (
     <ReLink
       component={Item}
@@ -30,11 +31,11 @@ const NavItem = (props) => {
         callfunc(onClick, [e]);
         callfunc(handleOn, [e]);
       }}
-      scrollBack={false}
-      href={link || href}
+      scrollBack={!(0 === thisHref.indexOf("#"))}
+      href={thisHref}
     >
-        {thisIcon}
-        {text}
+      {thisIcon}
+      {text}
     </ReLink>
   );
 };
