@@ -37,7 +37,7 @@ const ItemList = ({ header, content, meta, id, anchor }) => {
           lineAtom="p"
           item={true}
           id={id[key]}
-          key={meta[key]}
+          key={id[key]}
         />
       ))}
     </List>
