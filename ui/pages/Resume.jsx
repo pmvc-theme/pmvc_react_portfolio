@@ -253,7 +253,7 @@ const Resume = (props) => {
                   <Subtitle>{introduce}</Subtitle>
                 </Column>
                 <Column className="pure-u-md-2-5">
-                  <Me />
+                  <Me aniProps={{ style: { width: 320, height: 320, margin: "0 auto" } }} />
                 </Column>
               </Row>
               <Section name="info" title="Personal Information">
