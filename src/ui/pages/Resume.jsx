@@ -144,6 +144,10 @@ const Interests = ({ data }) => {
   );
 };
 
+const RenderContent = ({ content = "" }) => {
+  return <Unsafe>{marked(content)}</Unsafe>;
+};
+
 const SectionHeader = ({ title }) => {
   return (
     <Row>
@@ -253,13 +257,27 @@ const Resume = (props) => {
                   <Subtitle>{introduce}</Subtitle>
                 </Column>
                 <Column className="pure-u-md-2-5">
-                  <Me aniProps={{ style: { width: 320, height: 320, margin: "0 auto" } }} />
+                  <Me
+                    aniProps={{
+                      style: { width: 320, height: 320, margin: "0 auto" },
+                    }}
+                  />
                 </Column>
               </Row>
               <Section name="info" title="Personal Information">
                 <ContactInfo />
               </Section>
             </>
+          ),
+          careerSummary: (
+            <Section name="careerSummary" title="Career Summary">
+              <RenderContent />
+            </Section>
+          ),
+          skillSummary: (
+            <Section name="skillSummary" title="Skill Summary">
+              <RenderContent />
+            </Section>
           ),
           experienceWithTitle: (
             <Section name="detail" title="Work Experience">

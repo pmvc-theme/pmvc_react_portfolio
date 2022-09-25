@@ -7,7 +7,7 @@ import { pageWidth } from "react-atomic-molecule";
 import WhiteBlock from "../molecules/WhiteBlock";
 import Header from "../molecules/AnimateHeader";
 import Content from "../molecules/AnimateContent";
-import goTo from "../../src/goTo";
+import goTo from "../../goTo";
 
 const ExperienceBody = ({ header, content, events, link }) => {
   useEffect(() => {
